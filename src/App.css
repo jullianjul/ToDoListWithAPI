@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Autour+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: rgb(46, 201, 201);
+    border-bottom: solid 1px;
+    border-color: rgb(9, 37, 94);
+}
+.headerdark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: rgb(38, 43, 43);
+    border: solid 2px;
+    border-color: rgb(21, 22, 24);
+}
+.Navs_li{
+    list-style-type: none;
+    margin-bottom: 5px ;
+    margin-right: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid;
+}
+.Navs_lidark{
+    list-style-type: none;
+    margin-bottom: 5px ;
+    margin-right: 20px;
+    background-color: rgb(255, 173, 49);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid (255, 173, 49);
+}
+.Navs_li:hover{
+    background-color: rgb(173, 169, 169);
+    color: black;
+    border: 2px solid rgb(80, 80, 77) ;
+}
+.Navs_lidark:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(255, 173, 49) ;
+}
+.Navs_log_user{
+    list-style-type: none;
+    margin-bottom: 5px ;
+    margin-right: 20px;
+    background-color: rgb(255, 230, 9);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+}
+.Navs_log_userdark{
+    list-style-type: none;
+    margin-bottom: 3px ;
+    margin-right: 20px;
+    background-color: rgb(66, 11, 218);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgb(66, 11, 218);
+}
+.Navs_log_user:hover{
+    background-color: rgb(160, 148, 46);
+    color: black;
+    border: 2px solid rgb(118, 117, 121);
+}
+.Navs_log_userdark:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 2px solid rgb(66, 11, 218);
+}
+.Navs_log_user a:hover{
+    color: rgb(255, 255, 255);
+}
+.Navs_log_user a{
+    color: rgb(0, 0, 0);
+}
+.Navs_a{
+    font-size: 24px;
+    color: black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+.Navs_adark{
+    font-size: 24px;
+    color: rgb(255, 248, 248);
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+.Navs_adark:hover{
+    color: black;
+}
+.Navs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0x;
+    margin-top: 5px;
+}
+.Cajanav{
+    margin-right: 20px;
+}
+.titulos{
+    font-size: 30px;
+    margin-left: 100px;
+    font-family:'Autour+One';
+    color: white;
+}
+
+.perfiltitulos{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.btn-miperfil{
+    background-color: white;
+    border: 2px solid rgb(0, 0, 0);
+    margin-left: 20px;
+    border-radius: 16px;
+    width: 100px;
+    font-size: 15px;
+    height: 30px;
+    cursor: pointer;
+}
+.btn-miperfil:hover{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+}
+
+/** Darkmode classes start*/
+
+
+@media(max-width:1070px){
+    .header{
+        height: 12vh;
+    }
+    .headerdark{
+        height: 12vh;
+    }
+    .Navs{
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+    .titulos{
+        margin-left: 5px;
+    }
+    .Navs_a{
+        font-size: 15px;
+    }
+    .Navs_adark{
+        font-size: 15px;
+    }
+    .Navs_li{
+        margin-bottom: 1px;
+        margin-right: 0;
+    }
+    .Navs_lidark{
+        margin-bottom: 2px;
+        margin-right: 0;
+    }
+    .Navs_log_user{
+        margin-right: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .Navs_log_userdark{
+        margin-right: 0;
+    }
+    .perfiltitulos{
+        text-align: center;
+    }
+}
+
+@media(max-width:530px){
+    .header{
+        height: 12vh;
+    }
+    .headerdark{
+        height: 12vh;
+    }
+    .titulos{
+        font-size: 20px;
+    }
+    .perfiltitulos{
+        flex-direction: column;
+        text-align: center;
+    }
+    .btn-miperfil{
+        margin-left: 0px;
+    }
+}
+@media(max-width:350px){
+    .titulos{
+        font-size: 14px;
+    }
+    .perfiltitulos{
+        flex-direction: column;
+        text-align: center;
+    }
+    .btn-miperfil{
+        margin-left: 0px;
+    }
+}
+

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Autour+One&family=EB+Garamond:ital@0;1&family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Titan+One&display=swap');
+*{
+    margin: none;
+    padding: none;
+}
+.main{
+    background-image: url(../img/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 0px;
+    width: 100%;
+    height: 92vh;
+}
+.maindark{
+    background-image: url(../img/Fondodarkmode.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: 0px;
+    width: 100%;
+    height: 92vh;
+}
+.titlebrand{
+    font-family: 'Titan One', sans-serif;
+    color: rgb(248, 100, 1);
+}
+.titlebranddark{
+    font-family: 'Titan One', sans-serif;
+    color: rgba(0, 0, 0, 0.829);
+}
+.titulo{
+    font-size: 26px;
+    font-family: 'EB Garamond', serif;
+}
+.title{
+    background-color: rgba(247, 247, 247, 0.8);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    border: solid 1px;
+    border-color:hsl(0, 0%, 0%);
+}
+.titlebrand{
+    font-size: 29px;
+}
+.descripcion2{
+    background-color: hsla(180, 87%, 76%, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    backdrop-filter: blur(2px);
+}
+.descripcion2dark{
+    background-color: hsla(180, 22%, 73%, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    backdrop-filter: blur(2px);
+}
+.descripcion{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link{
+    font-size: 30px;
+    text-decoration: underline;
+    color: rgb(238, 2, 2);
+}
+.cajadescripcion{
+    width: 60%;
+    border: solid 4px;
+    background-color: hsl(64, 100%, 70%);
+    border-color: hsl(67, 100%, 98%);
+    border-radius: 20px;
+    height: 300px;
+    display: flex;
+    margin-left: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.7);
+}
+.descripcionP{
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.ImgTodolist{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel__image0{
+    background-image: url(./../img/muchachosconarchivos.jpg);
+    background-position: center;
+    height: 100%;
+    background-size: contain;
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: solid 1px;
+    border-color:hsl(0, 0%, 0%);
+    box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.7);
+}
+.carousel__image1{
+    background-image: url(./../img/hacertodo.jpg);
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: solid 1px;
+    border-color:hsl(0, 0%, 0%);
+    box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.7);
+}
+.carousel__image2{
+    background-image: url(./../img/Marcandocorrecto.jpg);
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: solid 1px;
+    border-color:hsl(0, 0%, 0%);
+    box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.7);
+}
+.active-BTN {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* Otras propiedades de animación si las necesitas */
+  }  
+.descripcion {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+.carousel__image {
+    transition: opacity 0.5s ease;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.Botonesdenavegacion{
+    width: 60vw;
+    height: 40px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.carousel__button{
+    height: 35px;
+    background-color: rgb(238, 173, 74);
+    border-radius: 20px;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.infoflechas{
+    font-size: 10px;
+}
+.link{
+    cursor: pointer;
+}
+@media(max-width:1000px){
+    .descripcion2{
+        flex-direction: column;
+        height: 800px;
+        justify-content: start;
+    }
+    .descripcion2dark{
+        flex-direction: column;
+        height: 800px;
+        justify-content: start;
+    }
+    .descripcion{
+        flex-direction: column;
+        justify-content: start;
+    }
+    .cajadescripcion{
+        width: 98%;
+        margin-left: 0;
+    }
+    .carousel__image0{
+        height: 300px;
+        margin-right: 0;
+        margin-left: 0;
+        width: 300px;
+    }
+    .carousel__image1{
+        height: 300px;
+        margin-right: 0;
+        margin-left: 0;
+        width: 300px;
+    }
+    .carousel__image2{
+        height: 300px;
+        margin-right: 0;
+        margin-left: 0;
+        width: 300px;
+    }
+    .main{
+        height: 150vh;
+    }
+    .maindark{
+        height: 150vh;
+    }
+    .ImgTodolist{
+        height: 50%;
+        width: 100%;
+    }
+}
