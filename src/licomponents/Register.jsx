@@ -1,9 +1,13 @@
 import React from 'react'
+import './Register.css'
+import { useDarkMode } from '../Modals/DarkModeContext'
 
 export const Register = ({attributes, handleChangeregister, props}) => {
+  const { darkmode, toggleDarkMode } = useDarkMode();
   return (
     <>
-    <label htmlFor={attributes.id}></label>
+    <div className='input_container'>
+    <label htmlFor={attributes.id} className={darkmode?'Input_title_contentdark':'Input_title_content'}>{attributes.id}</label>
     <input
     id={attributes.id}
     name={attributes.name}
@@ -12,6 +16,7 @@ export const Register = ({attributes, handleChangeregister, props}) => {
     onChange={ (e) => handleChangeregister(e.target, e.target.value)}
     className={attributes.Check}
    />
+    </div>
     </>
   )
 }

@@ -7,15 +7,21 @@ const DarkModeContext = createContext();
 const DarkModeProvider = ({ children }) => {
   const isDarkModeInLocalStorage = localStorage.getItem('darkmode') === 'true';
   const [darkmode, setDarkMode] = useState(isDarkModeInLocalStorage);
-
+  const [mostrarFormulario, setMostrarFormulario]= useState(true);
   // Función para alternar el modo oscuro
+
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
     localStorage.setItem('darkmode', !darkmode);
   };
 
+
+  const toggleFormulario = () => {
+    setMostrarFormulario(!mostrarFormulario);
+  };
+
   return (
-    <DarkModeContext.Provider value={{ darkmode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ darkmode, toggleDarkMode, mostrarFormulario, toggleFormulario }}>
       {children}
     </DarkModeContext.Provider>
   );

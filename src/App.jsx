@@ -3,43 +3,18 @@ import { Route, Routes } from 'react-router-dom';
 import Loginandregister from './Loginandregister';
 import './App.css';
 import Homem from './Homem';
-import Input from './input';
+import Mainregister from './Logic/Mainregister';
 import Aplication from './Aplication';
 import { Li } from './licomponents/Li';
 import DarkModeButton from './Modals/Darkmode';
 import { useDarkMode } from './Modals/DarkModeContext';
+import Mainlogin from './Logic/Mainlogin';
 
 function Home() {
 
   return(
     <Homem/>
   )
-}
-
-const SearchPage= () => {
-
-  const [user, setemail]= useState('')
-  function handleChange(attributes, value){
-    if(attributes.name === 'user'){
-      setemail(value)
-    }else{
-      console.log('error')
-    }
-  }
-
-  console.log('usuario',user)
-  return(
-    <>
-    <Input attributes={{
-                  id:'email',
-                  name: 'user',
-                  type: 'text',
-                  placeholder: 'Ingrese su email'
-                }
-                } handleChange={handleChange}/>
-    </>
-  );
-  
 }
 
 
@@ -63,6 +38,7 @@ function App() {
 
 
   return (
+    <>
     <div className='App'>
       <div className={darkmode?'headerdark':'header'}>
       <div className='perfiltitulos'>
@@ -83,12 +59,13 @@ function App() {
           </ul>
         </nav> 
       </div>
-      <Routes>
+    </div>
+    <Routes>
         <Route path='/ToDoList' element={<Home />}/>
         <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoList/aplication' element={<Aplication/>} />
       </Routes>
-    </div>
+    </>
   );
 }
 
