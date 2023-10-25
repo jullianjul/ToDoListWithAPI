@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Loginandregister.css';
-import { useDarkMode } from './Modals/DarkModeContext';
+import { useDarkMode } from '../Modals/DarkModeContext';
 import { useNavigate } from "react-router-dom";
-import Mainregister from './Logic/Mainregister';
-import Mainlogin from './Logic/Mainlogin';
+import Mainregister from '../Logic/Mainregister';
+import Mainlogin from '../Logic/Mainlogin';
 
 const LoginAndRegister= () => {
   {/*inicio animación*/}

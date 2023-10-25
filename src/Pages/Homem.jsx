@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Homem.css';
-import { useDarkMode } from "./Modals/DarkModeContext";
+import { useDarkMode } from "../Modals/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 
 function Homem() {
@@ -60,6 +60,7 @@ function Homem() {
   return (
     <>
       <main className={darkmode?'maindark':'main'}>
+        <div className="espacio"></div>
         <div className="title">
           <h1 className="titulo">
             Bienvenido a <span className={darkmode?'titlebranddark':'titlebrand'}>Tu Lista Maestra</span>

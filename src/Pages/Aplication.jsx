@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Aplication.css'
-import { Todolistapp } from './Todolistapp/Todolistapp';
+import { Todolistapp } from '../Todolistapp/Todolistapp';
 import { useNavigate } from "react-router-dom";
 
 const Aplication = () => {

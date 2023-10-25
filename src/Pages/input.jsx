@@ -1,6 +1,6 @@
 import React from 'react';
 import './Input.css'
-import { useDarkMode } from './Modals/DarkModeContext'
+import { useDarkMode } from '../Modals/DarkModeContext'
 
 const Input = ({attributes, handleChange, param})=> {
   const { darkmode, toggleDarkMode } = useDarkMode();

@@ -3,19 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import Loginandregister from './Loginandregister';
 import './App.css';
 import Homem from './Homem';
-import Mainregister from './Logic/Mainregister';
 import Aplication from './Aplication';
-import { Li } from './licomponents/Li';
-import DarkModeButton from './Modals/Darkmode';
-import { useDarkMode } from './Modals/DarkModeContext';
-import Mainlogin from './Logic/Mainlogin';
-
-function Home() {
-
-  return(
-    <Homem/>
-  )
-}
+import { Li } from '../licomponents/Li';
+import DarkModeButton from '../Modals/Darkmode';
+import { useDarkMode } from '../Modals/DarkModeContext';
 
 
 function App() {
@@ -61,7 +52,7 @@ function App() {
       </div>
     </div>
     <Routes>
-        <Route path='/ToDoList' element={<Home />}/>
+        <Route path='/ToDoList' element={<Homem />}/>
         <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoList/aplication' element={<Aplication/>} />
       </Routes>
