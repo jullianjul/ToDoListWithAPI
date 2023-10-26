@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Register } from '../licomponents/Register';
 import Modal from '../Modals/Modal';
-import { useDarkMode } from '../Modals/DarkModeContext';
+import { useDarkMode } from '../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
 import './Mainregister.css';
+import { useUser } from '../Context/Usercontext';
 
 
 const Mainregister= () => {
   {/*inicio animación*/}
   const { darkmode, toggleDarkMode, mostrarFormulario, toggleFormulario } = useDarkMode();
   const navigate = useNavigate();
+  const {continueloguin} = useUser();
+  
   
   {/*Fin animación*/}
 
@@ -182,25 +185,8 @@ const Mainregister= () => {
 
   const handleContinue = () => {
     setRegisterSuccess(false);
-    let ac = { EmailR, passwordR,NameR, username};
-    let account = JSON.stringify(ac);
-    localStorage.setItem('account', account);
-    localStorage.setItem('islog', true);
-    setIsLogin(true);
-            // Retraso de 0.5 segundos antes del primer toggleDarkMode
-            setTimeout(() => {
-              toggleDarkMode();
-              // Retraso de 0.5 segundos antes del segundo toggleDarkMode
-              setTimeout(() => {
-                toggleDarkMode();
-                navigate("/ToDoList/Aplication");
-              }, 10);
-            }, 10);
-
-    console.log('Usuario logueado:', NameR);
-
-
-    navigate("/ToDoList/Aplication");
+    let usertotalinfo={EmailR,passwordR};
+    continueloguin(usertotalinfo);
     // Lógica para continuar, si es necesario
     // Por ejemplo, redirigir a otra página
   }

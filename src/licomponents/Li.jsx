@@ -1,5 +1,5 @@
 import React from "react";
-import { useDarkMode } from "../Modals/DarkModeContext";
+import { useDarkMode } from "../Context/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 
 export const Li = (props,param) => {

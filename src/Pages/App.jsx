@@ -5,27 +5,23 @@ import './App.css';
 import Homem from './Homem';
 import Aplication from './Aplication';
 import { Li } from '../licomponents/Li';
-import DarkModeButton from '../Modals/Darkmode';
-import { useDarkMode } from '../Modals/DarkModeContext';
-
+import DarkModeButton from '../Context/Darkmode';
+import { useDarkMode } from '../Context/DarkModeContext';
+import { useUser } from '../Context/Usercontext';
 
 function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
-    const getislog = localStorage.getItem('islog');
-    const isloguin = JSON.parse(getislog);
-    const storedAccount = localStorage.getItem('account');
-    const user = JSON.parse(storedAccount);
-    const username = user ? user.username : '';
-    const [usershow, setUserShow]= useState('');
+  const { currentUser,isLoggedIn } = useUser();
 
-
+    let nameuser = currentUser ? currentUser.Name : '';
     useEffect(() => {
-      if(username.length>10){
-        setUserShow(username.substring(0, 10) + '...')
+      if(nameuser.length>10){
+        nameuser=(nameuser.substring(0,10)+'...')
       }else{
-        setUserShow(username)
+        nameuser=nameuser
       }
-    }, [username]);
+    }, [nameuser]);
+
 
 
   return (
@@ -33,9 +29,9 @@ function App() {
     <div className='App'>
       <div className={darkmode?'headerdark':'header'}>
       <div className='perfiltitulos'>
-      {isloguin ? (
+      {isLoggedIn ? (
         <>
-        <h1 className='titulos'>Lista Maestra de {usershow}</h1>
+        <h1 className='titulos'>Lista Maestra de {nameuser}</h1>
         <button className='btn-miperfil'>Mi perfil</button>
         </>
       ):
@@ -45,7 +41,7 @@ function App() {
         <nav className='Cajanav'>
           <ul className='Navs'>
             <Li className={darkmode?'Navs_lidark':'Navs_li'} link='/ToDoList' content='Home'/>
-            <Li className={isloguin ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isloguin ? '/ToDoList/aplication' : '/ToDoList/loginandregister'} content={isloguin ? 'Ingresar' : 'Registrarse/iniciar'}/>
+            <Li className={isLoggedIn ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isLoggedIn ? '/ToDoList/aplication' : '/ToDoList/loginandregister'} content={isLoggedIn ? 'Ingresar' : 'Registrarse/iniciar'}/>
             <DarkModeButton/>
           </ul>
         </nav> 

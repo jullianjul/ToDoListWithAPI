@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './Mainregister.css';
 import Input from './../Pages/input';
-import { useDarkMode } from './../Modals/DarkModeContext';
+import { useDarkMode } from './../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
+import { useUser } from './../Context/Usercontext';
+
 
 const Mainlogin= () => {
   {/*inicio animación*/}
-  const { darkmode, toggleDarkMode,mostrarFormulario, toggleFormulario } = useDarkMode();
+  const { darkmode, toggleDarkMode, toggleFormulario } = useDarkMode();
   const navigate = useNavigate();
   const getislog = localStorage.getItem('islog')||{};
+  const { login } = useUser(); //contexto
   useEffect(() => {
     console.log(getislog)
     if(getislog==='true'){
@@ -78,15 +81,26 @@ const Mainlogin= () => {
           // Si la respuesta es un error, muestra el mensaje de error
           return response.json().then((errorData) => {
             console.error('Error en el registro:', errorData.error);
+            if(errorData.error==='Credentials are incorrect'){
+              setHasError(true)
+            }else{
+              window.alert('Algo salio mal :C')
+            }
           });
         }
       })
       .then((data) => {
         // Los datos exitosos están disponibles aquí
-        console.log('Datos de usuario:', data.user);
+        let useraccount={
+          Name:data.user.firstName,
+          lastName:data.user.lastName,
+          id:data.user._id,
+          email:data.user.email,
+          password:data.user.password
+        };
+        console.log(useraccount);
+        login(useraccount);
         navigate('/ToDoList/aplication');
-
-    
         // Puedes realizar otras acciones aquí, como redirigir al usuario
       })
       .catch((error) => {

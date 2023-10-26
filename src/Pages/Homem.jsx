@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Homem.css';
-import { useDarkMode } from "../Modals/DarkModeContext";
+import { useDarkMode } from "../Context/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 
 function Homem() {

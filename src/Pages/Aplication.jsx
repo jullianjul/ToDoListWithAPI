@@ -2,18 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './Aplication.css'
 import { Todolistapp } from '../Todolistapp/Todolistapp';
 import { useNavigate } from "react-router-dom";
+import { useUser } from '../Context/Usercontext';
+
 
 const Aplication = () => {
   const navigate = useNavigate();
-  const storedAccount = localStorage.getItem('account');
-  const user = JSON.parse(storedAccount);
-  const username = user ? user.username : '';
-  const Name = user ? user.NameR : '';
-  const Email = user ? user.EmailR : '';
-  const Password = user ? user.passwordR : '';
-  const getislog = localStorage.getItem('islog');
-  const isloguin = JSON.parse(getislog);
-
+  const { isLoggedIn } = useUser(); //contexto
   // Estados para el contador y el valor inicial
   const [segundosRestantes, setSegundosRestantes] = useState(10);
 
@@ -23,7 +17,7 @@ const Aplication = () => {
   };
 
   useEffect(() => {
-    if (!isloguin) {
+    if (!isLoggedIn) {
       if (segundosRestantes > 0) {
         const intervalo = setInterval(() => {
           setSegundosRestantes((prevSegundos) => prevSegundos - 1);
@@ -35,13 +29,13 @@ const Aplication = () => {
         funcionDemorada();
       }
     }
-  }, [segundosRestantes, isloguin]);
+  }, [segundosRestantes, isLoggedIn]);
 
 
 
   return (
     <div>
-      {isloguin ? (
+      {isLoggedIn ? (
           <Todolistapp />
       ) : (
         <div className='alertnotlog'>

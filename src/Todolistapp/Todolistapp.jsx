@@ -3,15 +3,15 @@ import './Todolistapp.css';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BsCheckLg } from 'react-icons/bs';
 import Modal from './../Modals/Modal';
-import { useDarkMode } from '../Modals/DarkModeContext';
+import { useDarkMode } from '../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
+import { useUser } from '../Context/Usercontext';
 
 export const Todolistapp = () => {
   const navigate = useNavigate();
-
+  const {login, logout} = useUser();
   const clearLocalStorage = () => {
-    localStorage.removeItem('account');
-    localStorage.removeItem('islog');
+    logout();
                 // Retraso de 0.05 segundos antes del primer toggleDarkMode
                 setTimeout(() => {
                   toggleDarkMode();
