@@ -7,8 +7,8 @@ import { useUser } from '../Context/Usercontext';
 
 const Aplication = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useUser(); //contexto
-  // Estados para el contador y el valor inicial
+  const { state } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
+  const { isLoggedIn } = state; // Accedes a las propiedades desde el estado del reducer
   const [segundosRestantes, setSegundosRestantes] = useState(10);
 
   // Función que se ejecutará después de la cuenta regresiva

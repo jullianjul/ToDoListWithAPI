@@ -1,7 +1,8 @@
 // UserContext.js
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useReducer, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { User_Auth} from '../ServicesApi/Apifecth';
+import { userReducer,initialState } from '../Reducer/useReduceruser';
 const UserContext = createContext();
 
 export const useUser = () => {
@@ -11,10 +12,8 @@ export const useUser = () => {
 
 //guarda el usuario en un contexto global
 export const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [state, dispatch] = useReducer(userReducer, initialState);
   const navigate = useNavigate();
-  const [credentialserror, setCredentialsError]=useState(false);
   const continueloguin = async (user) => {
     try {
       const response = await User_Auth(user);
@@ -22,37 +21,24 @@ export const UserProvider = ({ children }) => {
         // Si hay un error en la respuesta de la API, no actualices currentUser
         console.error('Error en la solicitud:', response.error);
         if(response.error==='Credentials are incorrect'){
-          setCredentialsError(true);
+          dispatch({ type: 'LOGIN_FAILURE', payload: response});
         }else{
-          window.alert('Lo sentimos, sucedió un error inesperado')
+          dispatch({ type: 'LOGIN_FAILURE' });
+          window.alert('algo salio mal')
         }
         //no hay un if que detecte el error de la solicitud
       } else {
         // Si la respuesta es exitosa, actualiza el estado de currentUser
-        setCurrentUser(response.user);
-        setIsLoggedIn(true);
-        console.log(response)
-        navigate('/ToDoList/aplication');
+        dispatch({ type: 'LOGIN_SUCCESS', payload: response.user });
+        navigate('/ToDoList/aplication')
       }
     } catch (error) {
       console.error('Error en continueloguin:', error);
       // Manejar el error, si es necesario
     }
   };
-  
-
-  const login = (userData) => {
-    setIsLoggedIn(true);
-    setCurrentUser(userData);
-  };
-
-  const logout = () => {
-    setIsLoggedIn(false);
-    setCurrentUser(null);
-  };
-
   return (
-    <UserContext.Provider value={{ isLoggedIn, currentUser, login, logout,continueloguin,credentialserror,setCredentialsError }}>
+    <UserContext.Provider value={{ state, dispatch,continueloguin }}>
       {children}
     </UserContext.Provider>
   );

@@ -11,8 +11,9 @@ import { useUser } from '../Context/Usercontext';
 
 function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
-  const { currentUser,isLoggedIn } = useUser();
-
+  const { state } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
+  const { currentUser, isLoggedIn } = state; // Accedes a las propiedades desde el estado del reducer
+  
     let nameuser = currentUser ? currentUser.firstName : '';
     useEffect(() => {
       if(nameuser.length>10){

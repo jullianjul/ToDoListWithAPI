@@ -11,7 +11,8 @@ const Mainlogin= () => {
   const { darkmode, toggleDarkMode, toggleFormulario } = useDarkMode();
 
   const navigate = useNavigate();
-  const { continueloguin, credentialserror,setCredentialsError } = useUser(); //contexto
+  const { state, continueloguin } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
+  const { credentialsError } = state; // Accedes a las propiedades desde el estado del reducer
   
   {/*Fin animación*/}
 
@@ -24,7 +25,6 @@ const Mainlogin= () => {
   {/*fin parametros login*/}
    {/*funciones login*/}
   function handleChange(attributes,Value){
-    setCredentialsError(false);
     if (attributes.name === 'email'){
       setEmail(Value)
     } else if(attributes.name === 'Password'){
@@ -55,7 +55,7 @@ const Mainlogin= () => {
     <form  className={darkmode?'formulario_dark':"formulario_"}>
                 <h2 className={darkmode?'formtitledark':'formtitle'}>Iniciar Sesión</h2>
                 
-                {credentialserror &&
+                {credentialsError &&
                 <div className='label-alert'>
                 <label htmlFor="" className='label-alert-content'>su contraseña o usuario son incorrectos o no estan en nuestra plataforma</label>
                 </div>}

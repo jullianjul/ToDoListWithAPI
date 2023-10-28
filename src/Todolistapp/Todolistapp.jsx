@@ -9,18 +9,11 @@ import { useUser } from '../Context/Usercontext';
 
 export const Todolistapp = () => {
   const navigate = useNavigate();
-  const {login, logout} = useUser();
+  const { dispatch } = useUser(); // Aquí se obtienen las funciones del reducer
+
   const clearLocalStorage = () => {
-    logout();
-                // Retraso de 0.05 segundos antes del primer toggleDarkMode
-                setTimeout(() => {
-                  toggleDarkMode();
-                  // Retraso de 0.05 segundos antes del segundo toggleDarkMode
-                  setTimeout(() => {
-                    toggleDarkMode();
-                  }, 10);
-                }, 10);
-    navigate("/ToDoList/loginandregister");
+    dispatch({ type: 'LOGOUT'});
+    navigate('/ToDoList/loginandregister')
   };
 
   const [loggedInUser, setLoggedInUser] = useState(null);
