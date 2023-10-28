@@ -46,6 +46,7 @@ const Mainregister= () => {
       }
     }
     if (attributes.name === 'Emailr') {
+      setEmailr(Value);
       if(Value.includes(' ')){
         setEmailError(true);
       }else{
@@ -58,7 +59,6 @@ const Mainregister= () => {
         } else {
           // El email contiene "@" y tiene longitud suficiente
           setEmailError(false);
-          setEmailr(Value);
           console.log('El email es válido');
         }
       } else {
@@ -70,7 +70,7 @@ const Mainregister= () => {
 
     if(attributes.name==='Usernamer'){
       //comprueba si el user tiene mas de 6 caracteres
-   
+      setUserName(Value);
       setHasErrorr(false);
       if(Value.length<3){
         setUserError(true);
@@ -79,7 +79,6 @@ const Mainregister= () => {
           setUserError(true)
         }else{
           setUserError(false);
-          setUserName(Value);
         }
       }
     }
@@ -145,6 +144,7 @@ const Mainregister= () => {
   function handleSubmitregister(){
     if(EmailR===''||passwordR===''||username===''||NameR===''){
       console.log('papi sea serio')
+      console.log(EmailR, passwordR, username, NameR)
       setRegisterBlank(true)
       return;
     }
@@ -185,7 +185,10 @@ const Mainregister= () => {
 
   const handleContinue = () => {
     setRegisterSuccess(false);
-    let usertotalinfo={EmailR,passwordR};
+    let usertotalinfo={
+      email:EmailR,
+      password:passwordR
+    };
     continueloguin(usertotalinfo);
     // Lógica para continuar, si es necesario
     // Por ejemplo, redirigir a otra página

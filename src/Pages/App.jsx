@@ -13,7 +13,7 @@ function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
   const { currentUser,isLoggedIn } = useUser();
 
-    let nameuser = currentUser ? currentUser.Name : '';
+    let nameuser = currentUser ? currentUser.firstName : '';
     useEffect(() => {
       if(nameuser.length>10){
         nameuser=(nameuser.substring(0,10)+'...')

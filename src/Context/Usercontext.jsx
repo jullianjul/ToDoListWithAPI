@@ -1,72 +1,45 @@
 // UserContext.js
 import { createContext, useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { User_Auth} from '../ServicesApi/Apifecth';
 const UserContext = createContext();
 
 export const useUser = () => {
   return useContext(UserContext);
 };
 
+
+//guarda el usuario en un contexto global
 export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [userShow, setUserShow] = useState('');
   const navigate = useNavigate();
-  const continueloguin=(user)=>{
-    const userData = {
-        email: user.EmailR,
-        password: user.passwordR,
-        // Otros campos de registro si los tienes
-      };
-      console.log(userData)
+  const [credentialserror, setCredentialsError]=useState(false);
+  const continueloguin = async (user) => {
+    try {
+      const response = await User_Auth(user);
+      if ('error' in response) {
+        // Si hay un error en la respuesta de la API, no actualices currentUser
+        console.error('Error en la solicitud:', response.error);
+        if(response.error==='Credentials are incorrect'){
+          setCredentialsError(true);
+        }else{
+          window.alert('Lo sentimos, sucedió un error inesperado')
+        }
+        //no hay un if que detecte el error de la solicitud
+      } else {
+        // Si la respuesta es exitosa, actualiza el estado de currentUser
+        setCurrentUser(response.user);
+        setIsLoggedIn(true);
+        console.log(response)
+        navigate('/ToDoList/aplication');
+      }
+    } catch (error) {
+      console.error('Error en continueloguin:', error);
+      // Manejar el error, si es necesario
+    }
+  };
   
-      // Realizar una solicitud a la API para registrar al usuario
-      fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            // Registro exitoso
-            console.log('Usuario registrado con éxito');
-            return response.json()
-            // Puedes realizar otras acciones aquí, como redirigir al usuario
-          } else {
-            // Si la respuesta es un error, muestra el mensaje de error
-            return response.json().then((errorData) => {
-              console.error('Error en el registro:', errorData.error);
-              if(errorData.error==='Credentials are incorrect'){
-                window.alert('algo no fue como esperabas')
-              }else{
-                window.alert('Algo salio mal :C')
-              }
-            });
-          }
-        })
-        .then((data) => {
-          // Los datos exitosos están disponibles aquí
-          console.log('Datos de usuario:', data.user);
-          let useraccount={
-            Name:data.user.firstName,
-            lastName:data.user.lastName,
-            id:data.user._id,
-            email:data.user.email,
-            password:data.user.password
-          };
-          console.log(useraccount)
-          login(useraccount);
-          navigate('/ToDoList/aplication');
-          // Puedes realizar otras acciones aquí, como redirigir al usuario
-        })
-        .catch((error) => {
-          console.error('Error en la solicitud:', error);
-          // Manejar errores, si es necesario
-        });
-
-  }
 
   const login = (userData) => {
     setIsLoggedIn(true);
@@ -79,7 +52,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ isLoggedIn, currentUser, login, logout, userShow, setUserShow,continueloguin }}>
+    <UserContext.Provider value={{ isLoggedIn, currentUser, login, logout,continueloguin,credentialserror,setCredentialsError }}>
       {children}
     </UserContext.Provider>
   );

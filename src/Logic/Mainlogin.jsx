@@ -9,24 +9,9 @@ import { useUser } from './../Context/Usercontext';
 const Mainlogin= () => {
   {/*inicio animación*/}
   const { darkmode, toggleDarkMode, toggleFormulario } = useDarkMode();
+
   const navigate = useNavigate();
-  const getislog = localStorage.getItem('islog')||{};
-  const { login } = useUser(); //contexto
-  useEffect(() => {
-    console.log(getislog)
-    if(getislog==='true'){
-      redirectuser();
-    }
-    // Opcional: puedes devolver una función de limpieza (cleanup) si es necesario
-    return () => {
-      // Código de limpieza (se ejecuta cuando el componente se desmonta o cuando las dependencias cambian)
-    };
-  }, []);
-  function redirectuser(){
-    toggleDarkMode();
-    toggleDarkMode();
-    navigate('/ToDoList/aplication');
-  }
+  const { continueloguin, credentialserror,setCredentialsError } = useUser(); //contexto
   
   {/*Fin animación*/}
 
@@ -35,89 +20,33 @@ const Mainlogin= () => {
   const [Email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [passwordError, setPasswordError]= useState(false);
-  const [hasError, setHasError]= useState(false);
   
   {/*fin parametros login*/}
    {/*funciones login*/}
   function handleChange(attributes,Value){
+    setCredentialsError(false);
     if (attributes.name === 'email'){
       setEmail(Value)
-      setHasError(false)
     } else if(attributes.name === 'Password'){
       if(Value.length <8){
         setPasswordError(true);
-        setHasError(false)
       }else{
         setPasswordError(false);
         setPassword(Value)
-        setHasError(false)
       }
     }
   }
 
-  const handlelogin = (user) => {
+  const handleSubmit = () => {
     // Crear un objeto con los datos del registro
+    let user = {Email, password}
     const userData = {
       email: user.Email,
       password: user.password,
       // Otros campos de registro si los tienes
     };
-
-    // Realizar una solicitud a la API para registrar al usuario
-    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Registro exitoso
-          console.log('Usuario registrado con éxito');
-          return response.json()
-          // Puedes realizar otras acciones aquí, como redirigir al usuario
-        } else {
-          // Si la respuesta es un error, muestra el mensaje de error
-          return response.json().then((errorData) => {
-            console.error('Error en el registro:', errorData.error);
-            if(errorData.error==='Credentials are incorrect'){
-              setHasError(true)
-            }else{
-              window.alert('Algo salio mal :C')
-            }
-          });
-        }
-      })
-      .then((data) => {
-        // Los datos exitosos están disponibles aquí
-        let useraccount={
-          Name:data.user.firstName,
-          lastName:data.user.lastName,
-          id:data.user._id,
-          email:data.user.email,
-          password:data.user.password
-        };
-        console.log(useraccount);
-        login(useraccount);
-        navigate('/ToDoList/aplication');
-        // Puedes realizar otras acciones aquí, como redirigir al usuario
-      })
-      .catch((error) => {
-        console.error('Error en la solicitud:', error);
-        // Manejar errores, si es necesario
-      });
+    continueloguin(userData);
   };
-  
-
-
-
-
-  function handleSubmit(){
-    let account = {Email, password}
-    console.log(account)
-    handlelogin(account)
-  } 
 
 
   return (
@@ -126,7 +55,7 @@ const Mainlogin= () => {
     <form  className={darkmode?'formulario_dark':"formulario_"}>
                 <h2 className={darkmode?'formtitledark':'formtitle'}>Iniciar Sesión</h2>
                 
-                {hasError &&
+                {credentialserror &&
                 <div className='label-alert'>
                 <label htmlFor="" className='label-alert-content'>su contraseña o usuario son incorrectos o no estan en nuestra plataforma</label>
                 </div>}
