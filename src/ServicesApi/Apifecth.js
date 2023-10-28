@@ -1,5 +1,4 @@
 import { API_URL_USER, API_URL_USER_AUTH } from "./Urlapi";
-import { API_URL_USER_AUTH } from "./Urlapi";
 
 export const User_Auth = (userData) => {
   return fetch(API_URL_USER_AUTH, {
@@ -30,7 +29,7 @@ export const User_Auth = (userData) => {
     });
 };
 
-export const Create_user=()=>{
+export const Create_user=(userData)=>{
   return fetch(API_URL_USER, {
     method: 'POST',
     headers: {
@@ -57,5 +56,4 @@ export const Create_user=()=>{
       // Manejar errores, si es necesario
       return { error: error.message };
     });
-
 }

@@ -5,6 +5,7 @@ import { useDarkMode } from '../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
 import './Mainregister.css';
 import { useUser } from '../Context/Usercontext';
+import { Create_user } from '../ServicesApi/Apifecth';
 
 
 const Mainregister= () => {
@@ -96,50 +97,30 @@ const Mainregister= () => {
   //register api:
   const [Requireddataincorrect, setRequiredDataIncorrect]= useState(false);
   //register
-  const handleRegister = (Ruser) => {
+  const handleRegister = async(user) => {
     // Crear un objeto con los datos del registro
-    const userData = {
-      firstName: Ruser.NameR,
-      lastName: Ruser.username,
-      email: Ruser.EmailR,
-      password: Ruser.passwordR,
-      // Otros campos de registro si los tienes
-    };
-
     // Realizar una solicitud a la API para registrar al usuario
-    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Registro exitoso
-          console.log('Usuario registrado con éxito');
-          setRegisterSuccess(true);
-          // Puedes realizar otras acciones aquí, como redirigir al usuario
-        } else {
-          // Si la respuesta es un error, muestra el mensaje de error
-          return response.json().then((errorData) => {
-            console.error('Error en el registro:', errorData.error);
-            if(errorData.error==='Entered email already exists'){
-              setEmailAlreadyRegister(true);
-            }else{
-              setRequiredDataIncorrect(true);
-            }
-          });
+    try {
+      const response = await Create_user(user);
+      if ('error' in response) {
+        // Si hay un error en la respuesta de la API, no actualices currentUser
+        console.error('Error en la solicitud:', response.error);
+        if(response.error==='Entered email already exists'){
+          setEmailAlreadyRegister(true);
+        }else{
+          window.alert('Lo sentimos, sucedió un error inesperado')
         }
-      })
-      .catch((error) => {
-        console.error('Error en la solicitud:', error);
-        // Manejar errores, si es necesario
-      });
+        //no hay un if que detecte el error de la solicitud
+      } else {
+        // Si la respuesta es exitosa, actualiza el estado de currentUser
+        setRegisterSuccess(true);
+      }
+    } catch (error) {
+      console.error('Error en continueloguin:', error);
+      // Manejar el error, si es necesario
+    }
   };
-  //register
-
-
+  //register supervisor:
   const [registerblank,setRegisterBlank]=useState(false)
   function handleSubmitregister(){
     if(EmailR===''||passwordR===''||username===''||NameR===''){
@@ -153,36 +134,43 @@ const Mainregister= () => {
         console.log('papi, llene bien los campos')
         setHasErrorr(true)
       }else{
-        let usertotalinfo={EmailR,passwordR,NameR,username}
+        let usertotalinfo={ 
+          firstName:NameR,
+          lastName:username,
+          email:EmailR,
+          password:passwordR,
+        }
         console.log('user:', usertotalinfo)
         handleRegister(usertotalinfo);
-        
       }
     }else{
       console.log('XD dejaba los campos vacios')
       setHasErrorr(true)
     }
   }
-  {/*fin funciones register*/}
-  {/* register success functions*/}
+  {/*end functions supervisor register*/}
+
+  {/* register error functions*/}
   const handleContinueeu = () => {
     setEmailAlreadyRegister(false);
     setRegisterBlank(false);
     setRequiredDataIncorrect(false);
     setHasErrorr(false);
   }
+
   const handleModalCloseeu = () => {
     setEmailAlreadyRegister(false);
     setRegisterBlank(false);
     setRequiredDataIncorrect(false);
     setHasErrorr(false);
   }
-  
+  {/* end register error functions*/}
+
+  {/*register success functions*/}
   const handleModalClose = () => {
     setRegisterSuccess(false);
     // Habilita la interacción con la página nuevamente
   }
-
   const handleContinue = () => {
     setRegisterSuccess(false);
     let usertotalinfo={
@@ -190,23 +178,21 @@ const Mainregister= () => {
       password:passwordR
     };
     continueloguin(usertotalinfo);
-    // Lógica para continuar, si es necesario
-    // Por ejemplo, redirigir a otra página
+    // Lógica para guardar los datos del usuario en la pagina inmediatamente se registra
   }
-
-  {/* register success functions end*/}
+  {/* end register success functions*/}
 
   return (
     <>
     {registersuccess &&         <Modal
   modalattributes={{
-    modal: '', // Reemplaza '-modal-class' con la clase que desees para el contenedor modal.
-    content: '', // Reemplaza '-content-class' con la clase que desees para el contenido modal.
-    close: '', // Reemplaza '-close-class' con la clase que desees para el botón de cierre.
-    container: '', // Reemplaza '-container-class' con la clase que desees para el contenedor de contenido.
-    anouncement: '', // Reemplaza '-anouncement-class' con la clase que desees para el título.
-    description: '', // Reemplaza '-description-class' con la clase que desees para la descripción.
-    button: '', // Reemplaza '-button-class' con la clase que desees para el botón "Continuar".
+    modal: '', 
+    content: '', 
+    close: '',
+    container: '',
+    anouncement: '',
+    description: '', 
+    button: '', 
     anuncementtitle:'¡Bienvenido!',
     descriptiontext:'Te has registrado, dale click a "continuar" para iniciar sesión', //  TEXTO DENTRO DEL MODAL
     buttontext:'Continuar'
@@ -216,13 +202,13 @@ const Mainregister= () => {
 />}
 {registerblank &&         <Modal
   modalattributes={{
-    modal: '', // Reemplaza '-modal-class' con la clase que desees para el contenedor modal.
-    content: '', // Reemplaza '-content-class' con la clase que desees para el contenido modal.
-    close: '', // Reemplaza '-close-class' con la clase que desees para el botón de cierre.
-    container: '', // Reemplaza '-container-class' con la clase que desees para el contenedor de contenido.
-    anouncement: 'useroremail_alert', // Reemplaza '-anouncement-class' con la clase que desees para el título.
-    description: 'useroremail_alert_description', // Reemplaza '-description-class' con la clase que desees para la descripción.
-    button: '', // Reemplaza '-button-class' con la clase que desees para el botón "Continuar".
+    modal: '', 
+    content: '', 
+    close: '', 
+    container: '', 
+    anouncement: 'useroremail_alert', 
+    description: 'useroremail_alert_description', 
+    button: '', 
     anuncementtitle:'¡No puedes dejar areas en blanco!',
     descriptiontext:'Has intentado ingresar dejando areas en blanco, porfavor llene todo el formulario antes de continuar', //  TEXTO DENTRO DEL MODAL
     buttontext:'Ok'
@@ -231,16 +217,15 @@ const Mainregister= () => {
   onContinue={handleContinueeu}
 />}
 
-
 {(Emailalreadyregister===true) &&         (<Modal
   modalattributes={{
-    modal: '', // Reemplaza '-modal-class' con la clase que desees para el contenedor modal.
-    content: '', // Reemplaza '-content-class' con la clase que desees para el contenido modal.
-    close: '', // Reemplaza '-close-class' con la clase que desees para el botón de cierre.
-    container: '', // Reemplaza '-container-class' con la clase que desees para el contenedor de contenido.
-    anouncement: 'useroremail_alert', // Reemplaza '-anouncement-class' con la clase que desees para el título.
-    description: 'useroremail_alert_description', // Reemplaza '-description-class' con la clase que desees para la descripción.
-    button: '', // Reemplaza '-button-class' con la clase que desees para el botón "Continuar".
+    modal: '', 
+    content: '', 
+    close: '', 
+    container: '', 
+    anouncement: 'useroremail_alert', 
+    description: 'useroremail_alert_description', 
+    button: '', 
     anuncementtitle:'¡Email en uso!',
     descriptiontext:'Usted ya esta registrado en la plataforma, porfavor inicie sesión', //  TEXTO DENTRO DEL MODAL
     buttontext:'Ok'
@@ -251,13 +236,13 @@ const Mainregister= () => {
 }
 {(Requireddataincorrect) &&         (<Modal
   modalattributes={{
-    modal: '', // Reemplaza '-modal-class' con la clase que desees para el contenedor modal.
-    content: '', // Reemplaza '-content-class' con la clase que desees para el contenido modal.
-    close: '', // Reemplaza '-close-class' con la clase que desees para el botón de cierre.
-    container: '', // Reemplaza '-container-class' con la clase que desees para el contenedor de contenido.
-    anouncement: 'useroremail_alert', // Reemplaza '-anouncement-class' con la clase que desees para el título.
-    description: 'useroremail_alert_description', // Reemplaza '-description-class' con la clase que desees para la descripción.
-    button: '', // Reemplaza '-button-class' con la clase que desees para el botón "Continuar".
+    modal: '', 
+    content: '', 
+    close: '', 
+    container: '', 
+    anouncement: 'useroremail_alert', 
+    description: 'useroremail_alert_description', 
+    button: '', 
     anuncementtitle:'ups, Algo salio mal :c',
     descriptiontext:`lo sentimos parece estamos teniendo errores y trabajamos para solucionarlos`, //  TEXTO DENTRO DEL MODAL
     buttontext:'Ok'
@@ -268,13 +253,13 @@ const Mainregister= () => {
 }
 {(hasErrorR) &&         (<Modal
   modalattributes={{
-    modal: '', // Reemplaza '-modal-class' con la clase que desees para el contenedor modal.
-    content: '', // Reemplaza '-content-class' con la clase que desees para el contenido modal.
-    close: '', // Reemplaza '-close-class' con la clase que desees para el botón de cierre.
-    container: '', // Reemplaza '-container-class' con la clase que desees para el contenedor de contenido.
-    anouncement: 'useroremail_alert', // Reemplaza '-anouncement-class' con la clase que desees para el título.
-    description: 'useroremail_alert_description', // Reemplaza '-description-class' con la clase que desees para la descripción.
-    button: '', // Reemplaza '-button-class' con la clase que desees para el botón "Continuar".
+    modal: '', 
+    content: '', 
+    close: '', 
+    container: '', 
+    anouncement: 'useroremail_alert', 
+    description: 'useroremail_alert_description', 
+    button: '', 
     anuncementtitle:'Error Al Registrarse',
     descriptiontext:`porfavor ingrese bien los campos, no debe quedar ni un solo campo en rojo ;)`, //  TEXTO DENTRO DEL MODAL
     buttontext:'Ok'
