@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Todolistapp.css';
+import './Getalltodos.css'
 import { useNavigate } from "react-router-dom";
 import { useUser } from '../Context/Usercontext';
 import { Delete_TODO, Get_TODOS, Update_Todo } from '../ServicesApi/Apifecth';
@@ -92,7 +92,8 @@ export const Getalltodos = () => {
 
   return (
     <>
-      <div>
+     <div className='contenedortotal'>
+     <div>
         <Maininputs />
         <button onClick={() => setCurrentFilter('pendientes')}>Pendientes</button>
         <button onClick={() => setCurrentFilter('completadas')}>Completadas</button>
@@ -106,7 +107,7 @@ export const Getalltodos = () => {
           <div key={todo._id}>
             <h1>{todo.name}</h1>
             <div>{todo.description}</div>
-            <p>{todo.finishDate}</p>
+            <p>creada el: {todo.finishDate.substring(0,10)}</p>
             <button onClick={() => handleDelete(todo._id)}>Eliminar</button>
             {!todo.isCompleted && (
               <>
@@ -118,6 +119,7 @@ export const Getalltodos = () => {
         ))}
         {isEditing && <EditForm todo={selectedTodo} onUpdate={handleUpdate} onCancel={() => setIsEditing(false)} />}
       </div>
+     </div>
     </>
   );
 };

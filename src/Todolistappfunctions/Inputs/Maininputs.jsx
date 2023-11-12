@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useUser } from '../../Context/Usercontext';
 import { Create_Todo } from '../../ServicesApi/Apifecth';
 import { useTodoContext } from '../../Context/Todolistcontext';
+import './Maininputs.css'
 
 export const Maininputs = () => {
   const { state } = useUser();
@@ -32,7 +33,7 @@ export const Maininputs = () => {
       var mm = date.getMonth() + 1;
       var yyyy = date.getFullYear();
       var finalDate = yyyy + '-' + mm + '-' + dd;
-
+      //2023-11-11
       console.log(finalDate);
       const todoData = {
         name: title,
@@ -60,17 +61,17 @@ export const Maininputs = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Título:
-          <input type="text" value={title} onChange={handleTitleChange} />
+      <form onSubmit={handleSubmit} className='form_create_todos'>
+        <div className='form_container'>
+        <label className='form_label'>
+          <h6 className='todotitles'>titulo:</h6>
+          <input type="text" className='formtodo_inputs' value={title} onChange={handleTitleChange} />
         </label>
-        <br />
-        <label>
-          Descripción:
-          <input type="text" value={description} onChange={handleDescriptionChange} />
+        <label className='form_label'>
+          <h6 className='todotitles'>Descripcion:</h6>
+          <input type="text" className='formtodo_inputs' value={description} onChange={handleDescriptionChange} />
         </label>
-        <br />
+        </div>
         <button type="submit">Guardar Tarea</button>
       </form>
     </>
