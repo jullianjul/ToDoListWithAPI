@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Aplication.css'
-import { Todolistapp } from '../Todolistapp/Todolistapp';
 import { useNavigate } from "react-router-dom";
 import { useUser } from '../Context/Usercontext';
-
+import { Todolist } from './Todolist';
 
 const Aplication = () => {
   const navigate = useNavigate();
@@ -36,7 +35,7 @@ const Aplication = () => {
   return (
     <div>
       {isLoggedIn ? (
-          <Todolistapp />
+          <Todolist />
       ) : (
         <div className='alertnotlog'>
         <h1>Muy mal, no has iniciado sesión y estas intentando entrar</h1>
