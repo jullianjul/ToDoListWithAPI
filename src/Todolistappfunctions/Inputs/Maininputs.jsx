@@ -68,7 +68,6 @@ export const Maininputs = () => {
         
         // Agrega el nuevo TODO al contexto
         addTodo(response.todo);
-        console.log('Respuesta de la API:', response);
       } catch (error) {
         // Manejar errores, si es necesario
         console.error('Error al enviar la tarea:', error);

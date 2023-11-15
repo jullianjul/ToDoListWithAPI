@@ -1,7 +1,8 @@
 // TodoContext.jsx
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { useUser } from './Usercontext';
-import { todoReducer,initialState } from '../Reducer/useReducertodo';
+import { todoReducer, initialState } from '../Reducer/useReducertodo';
+import { Get_TODOS } from '../ServicesApi/Apifecth';
 
 const TodoContext = createContext();
 
@@ -11,39 +12,50 @@ export const useTodoContext = () => {
 
 export const TodoProvider = ({ children }) => {
   const { state } = useUser();
-  const { currentUser } = state;
-  const [todos, setTodos] = useState([]);
-  const [currentFilter, setCurrentFilter] = useState('pendientes');
-  const [isEditing, setIsEditing] = useState(false);
-  const [selectedTodo, setSelectedTodo] = useState(null);
-  const [createtodo, setCreateTodo]= useState(false);
-  const gettodos = (todo) => {
-    setTodos(todo);
-  };
-
-  const createtodohandler= ()=>{
-    setCreateTodo(!createtodo)
-    console.log(createtodo);
-  }
+  const [statet, dispatch] = useReducer(todoReducer, initialState);
 
   const addTodo = (newTodo) => {
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    dispatch({ type: 'CREATE_TODO', payload: newTodo });
   };
+
+  const gettodos = (todos) => {
+    dispatch({ type: 'GET_TODOS', payload: todos });
+  };
+
+  const createtodohandler = () => {
+    dispatch({ type: 'TOGGLE_CREATE_TODO' });
+  };
+
+  const setCurrentFilter = (filter) => {
+    dispatch({ type: 'SET_CURRENT_FILTER', payload: filter });
+  };
+
+  const setIsEditing = (editing) => {
+    dispatch({ type: 'SET_EDIT_MODE', payload: editing });
+  };
+
+  const setSelectedTodo = (todo) => {
+    dispatch({ type: 'SET_SELECTED_TODO', payload: todo });
+  };
+
+  // Otras funciones según sea necesario
 
   return (
     <TodoContext.Provider
       value={{
-        todos,
+        todos: statet.todos,
         addTodo,
         gettodos,
-        currentFilter,
+        currentFilter: statet.currentFilter,
         setCurrentFilter,
-        isEditing,
+        isEditing: statet.isEditing,
         setIsEditing,
-        selectedTodo,
+        selectedTodo: statet.selectedTodo,
         setSelectedTodo,
-        createtodo,
+        createtodo: statet.createtodo,
         createtodohandler,
+        isloading: statet.isloading,
+        dispatch
       }}
     >
       {children}
