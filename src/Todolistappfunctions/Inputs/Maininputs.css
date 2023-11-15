@@ -1,49 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto+Slab&display=swap');
 .form_create_todos{
-    background-color: blue;
+    position: absolute;
+
+    height: 100%;
     width: 100%;
+    background-color: rgba(122, 120, 117, 0.445);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    flex-direction: column;
 }
-.form_container{
-    background-color: blueviolet;
+.buttondiv{
+    width: 100%;
     display: flex;
     justify-content: end;
-    align-items: end;
+    align-items: center;
 }
-.form_label{
+.form_container{
+    background-color: #336b86;
+    border-radius: 20px;
+    height: 50%;
+    width: 40%;
     display: flex;
-    width: 100%;
-    margin-left: 30px;
-
+    align-items: center;
+    flex-direction: column;
+    min-width: 290px;
+    min-height: 300px;
 }
-.todotitles{
-    font-size: 30px;
-}
-.formtodo_inputs{
-    border: solid 2px black;
+.form_container_labelinputs{
+    background-color: #8fafc4;
+    height: 80%;
+    width: 50%;
+    min-width: 230px;
+    min-height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border-radius: 20px;
 }
-@media(max-width:800px){
-    .form_create_todos{
-        flex-direction: column;
-        height: 140px;
-    }
-    .form_container{
-        flex-direction: column;
-    }
-    .todotitles{
-        font-size: 20px;
-        width: 40%;
-        background-color: aqua;
-        display: flex;
-        justify-content: end;
-    }
-    .formtodo_inputs{
-        width: 60%;
-    }
-    .form_label{
-        margin-bottom: 10px;
-    }
+.formtodo_inputs{
+    width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+.formtodo_inputs:focus{
+    border: solid 2px red;
+}
+.textareainput{
+    height: 150px;
+    resize: none;
+}
+.todotitles{
+    font-size: 20px;
+}
+.exiticon{
+    font-size: 40px;
+    cursor: pointer;
+}
+.exiticon:hover{
+    color: red;
+}
+.form_create_todos_button{
+    background-color: rgb(255, 255, 4);
+    border: none;
+    border: solid 2px rgb(255, 255, 137);
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+}
+.form_create_todos_button:hover{
+    background-color: rgb(255, 255, 94);
+}
+.form_create_todo_inputerror{
+    display: flex;
+    background-color: aliceblue;
+    width: 80%;
+    height: 70%;
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: red;
+}
+
+.disableinputerror{
+    font-size: 30px;
+    color: red;
+    cursor: pointer;
+}
+.disableinputerror:hover{
+    color: rgb(248, 126, 126);
+}
+@media(max-width:600px){
+
 }

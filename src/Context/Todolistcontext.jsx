@@ -1,6 +1,7 @@
 // TodoContext.jsx
 import React, { createContext, useContext, useState } from 'react';
 import { useUser } from './Usercontext';
+import { todoReducer,initialState } from '../Reducer/useReducertodo';
 
 const TodoContext = createContext();
 
@@ -15,10 +16,15 @@ export const TodoProvider = ({ children }) => {
   const [currentFilter, setCurrentFilter] = useState('pendientes');
   const [isEditing, setIsEditing] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
-
+  const [createtodo, setCreateTodo]= useState(false);
   const gettodos = (todo) => {
     setTodos(todo);
   };
+
+  const createtodohandler= ()=>{
+    setCreateTodo(!createtodo)
+    console.log(createtodo);
+  }
 
   const addTodo = (newTodo) => {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
@@ -36,6 +42,8 @@ export const TodoProvider = ({ children }) => {
         setIsEditing,
         selectedTodo,
         setSelectedTodo,
+        createtodo,
+        createtodohandler,
       }}
     >
       {children}

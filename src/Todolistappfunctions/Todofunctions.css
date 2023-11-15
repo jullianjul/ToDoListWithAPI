@@ -1,0 +1,92 @@
+.contenedortotal{
+    background-color: aqua;
+}
+.Mainbuttons_todolist{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+}
+.activatecreatetodo{
+    padding: 10px 20px;
+    background-color: yellow;
+    border-radius: 20px;
+    border: solid 2px rgb(0, 0, 0);
+    cursor: pointer;
+}
+.contenedortotal{
+    border-radius: 20px;
+    width: 100%;
+    padding: 30px;
+}
+.ALLTODOS{
+    background-color: rgb(255, 255, 255);
+    height: 90vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+.pendingandcompleted-btn{
+    display: flex;
+    height: 100%;
+}
+.searcher{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searcher_input{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    height: 40px;
+    border-right: none;
+}
+.iconbox{
+    height: 40px;
+    width: 10%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: rgb(255, 255, 255);
+}
+.todo_container{
+    background-color: rgb(127, 255, 148);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.Todo_information{
+    width: 80%;
+    background-color: blueviolet;
+}
+.Todo_buttons{
+    width: 20%;
+    background-color: blue;
+}
+@media(max-width:600px){
+    .Mainbuttons_todolist{
+        flex-direction: column;
+        height: 100px;
+    }
+    .pendingandcompleted-btn{
+        display: flex;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .searcher{
+        height: auto;
+        width: 100%;
+
+    }
+    .searcher_input{
+        width: 90%;
+    }
+}
