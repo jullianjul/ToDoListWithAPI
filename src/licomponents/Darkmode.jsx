@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDarkMode } from './DarkModeContext'; // Importa el hook para consumir el contexto
+import { useDarkMode } from '../Context/DarkModeContext'; // Importa el hook para consumir el contexto
 
 const DarkModeButton = () => {
   const { darkmode, toggleDarkMode } = useDarkMode(); // Obtiene el valor y la función del contexto

@@ -1,0 +1,109 @@
+.edit-container-all{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(61, 61, 61, 0.788);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.edit-subcontainer{
+    height: 50%;
+    background-color: #336b86;
+    width: 40%;
+    min-width: 310px;
+    min-height: 310px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.edit-subcontainertrue{
+    background-color: #1f1f1f;
+}
+.edit-sub-subcontainer{
+    min-width: 250px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #8fafc4;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 9px 8px rgba(0, 0, 0, 0.7);
+}
+.edit-sub-subcontainertrue{
+    background-color: #4b4b4b;
+}
+.edit-labels{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+.edit-input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+.edit-textarea{
+    resize: none;
+    min-height: 80px;
+}
+.edit-label{
+    width: 100%;
+}
+.edit-buttons{
+    display: flex;
+}
+.edit-exitbutton-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.edit-exitbutton-containertrue{
+    color: red;
+}
+.edit-btn{
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+.editcancel{
+    background-color: #336b86;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+}
+.editcancel:hover{
+    background-color: red;
+}
+.editcanceltrue{
+    background-color: rgb(209, 139, 8);
+}
+.editcanceltrue:hover{
+    background-color: rgb(252, 168, 12);
+}
+.editactu{
+    background-color: rgb(255, 255, 4);
+    border: none;
+    border: solid 2px rgb(255, 255, 137);
+    margin-top: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+}
+.editactu:hover{
+    background-color: rgb(255, 255, 94);
+}
+
+@media(max-width:600px){
+    .edit-container-all{
+        height: 110vh;
+    }
+    .edit-container-all{
+        min-height: 700px;
+    }
+}

@@ -6,8 +6,11 @@ import { useTodoContext } from '../Context/Todolistcontext';
 import EditForm from './Updatetodo';
 import { FaPencil } from "react-icons/fa6";
 import { IoSearchSharp } from "react-icons/io5";
+import { FaEdit,FaCheckCircle,FaTrashAlt } from "react-icons/fa";
+import { useDarkMode } from '../Context/DarkModeContext';
 
 export const Todofunctions = () => {
+  const { darkmode, toggleDarkMode } = useDarkMode();
   const { state } = useUser();
   const { currentUser } = state;
   const {
@@ -32,6 +35,7 @@ export const Todofunctions = () => {
         dispatch({type:'IsLoading'})
         const response = await Get_TODOS(currentUser._id);
         dispatch({ type: 'GET_TODOS', payload: response.todos });
+        console.log(response.todos.length)
       } catch (error) {
         console.error('Error al obtener la lista de TODOS:', error);
       }finally{
@@ -88,12 +92,13 @@ export const Todofunctions = () => {
 
   return (
     <>
-      <div className='contenedortotal'>
+    {isEditing && <EditForm todo={selectedTodo} onUpdate={handleUpdate} onCancel={() => setIsEditing(false)} />}
+      <div className={'contenedortotal'+' contenedortotal'+darkmode}>
         <div>
           <div className='Mainbuttons_todolist'>
             <div className='pendingandcompleted-btn'>
-              <button onClick={() => setCurrentFilter('pendientes')}>Pendientes</button>
-              <button onClick={() => setCurrentFilter('completadas')}>Completadas</button>
+              <button onClick={() => setCurrentFilter('pendientes')} className={'mainbuttons-btn '+'pending'+currentFilter+' pending'+darkmode+currentFilter}>Pendientes</button>
+              <button onClick={() => setCurrentFilter('completadas')} className={'mainbuttons-btn '+'completed'+currentFilter+' completed'+darkmode+currentFilter}>Completadas</button>
             </div>
             <button onClick={() => dispatch({ type: 'TOGGLE_CREATE_TODO' })} className='activatecreatetodo'>
               Crear una tarea <FaPencil className='iconpencil' />
@@ -111,29 +116,35 @@ export const Todofunctions = () => {
               </div>
             </div>
           </div>
-          {isEditing && <EditForm todo={selectedTodo} onUpdate={handleUpdate} onCancel={() => setIsEditing(false)} />}
-          <div className='ALLTODOS'>
+          <div className={'ALLTODOS'+' ALLTODOS'+darkmode}>
             {isloading ? (
-              <p>Cargando...</p>
+              <div className='loading'>
+                <p>Cargando...</p>
+              </div>
             ) : (
-              filteredTodos.map((todo) => (
-                <div key={todo._id} className='todo_container'>
-                  <div className='Todo_information'>
-                    <h1>{todo.name}</h1>
-                    <div>{todo.description}</div>
+              filteredTodos.length === 0 ? (
+                <div className={'no-todos-message'+' no-todos-message'+darkmode}>
+                  <p>No hay tareas que coincidan con la búsqueda o filtro seleccionado.</p>
+                </div>
+              ) :
+              (filteredTodos.map((todo) => (
+                <div key={todo._id} className={'todo_container'+' todo_container'+darkmode}>
+                  <div className={'Todo_information'+' Todo_information'+darkmode}>
+                    <h1 className={'Todo-title t title'+currentFilter+' titletodo'+darkmode}>{todo.name.charAt(0).toUpperCase() + todo.name.slice(1)}</h1>
+                    <p className={'todo-description t description'+currentFilter}>{todo.description}</p>
                     {currentFilter==='pendientes' ? <p>creada el: {todo.finishDate.substring(0, 10)}</p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
                   </div>
                   <div className='Todo_buttons'>
-                    <button onClick={() => handleDelete(todo._id)}>Eliminar</button>
+                    <p onClick={() => handleDelete(todo._id)} className='todo-btn trash'><FaTrashAlt /></p>
                     {!todo.isCompleted && (
                       <>
-                        <button onClick={() => handleEdit(todo)}>Editar</button>
-                        <button onClick={() => handleMarkCompleted(todo)}>Marcar como Completada</button>
+                        <p onClick={() => handleEdit(todo)} className={'todo-btn edit'+' edit'+darkmode}><FaEdit /></p>
+                        <p onClick={() => handleMarkCompleted(todo)} className='todo-btn check'><FaCheckCircle /></p>
                       </>
                     )}
                   </div>
                 </div>
-              ))
+              )))
             )}
           </div>
         </div>

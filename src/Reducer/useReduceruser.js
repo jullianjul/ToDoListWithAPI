@@ -2,6 +2,7 @@ export const initialState = {
     isLoggedIn: false,
     currentUser: null,
     credentialsError: false,
+    isVerified:false,
 };
   
 export const userReducer = (state, action) => {
@@ -18,6 +19,11 @@ export const userReducer = (state, action) => {
           ...state,
           credentialsError: true,
         };
+      case 'VERIFY_USER':
+        return{
+          ...state,
+          isVerified:!state.isVerified
+        }
       case 'LOGOUT':
         return initialState;
       default:

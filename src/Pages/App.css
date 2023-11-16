@@ -153,9 +153,11 @@
 @media(max-width:1070px){
     .header{
         height: 12vh;
+        min-height: 80px;
     }
     .headerdark{
         height: 12vh;
+        min-height: 80px;
     }
     .Navs{
         flex-direction: column;

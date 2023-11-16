@@ -43,8 +43,10 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const [formupdateuser,setFormUpdateUser]=useState(false);
+
   return (
-    <UserContext.Provider value={{ state, dispatch, continueloguin }}>
+    <UserContext.Provider value={{ state, dispatch, continueloguin, isLoggedIn: state.isLoggedIn,formupdateuser,setFormUpdateUser }}>
       {children}
     </UserContext.Provider>
   );

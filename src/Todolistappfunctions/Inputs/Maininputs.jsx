@@ -62,10 +62,10 @@ export const Maininputs = () => {
       try {
         // Iniciar la carga
         setLoading(true);
-
+        console.log();
         // Llamar a Create_Todo y esperar la respuesta
         const response = await Create_Todo(todoData);
-        
+        console.log(response.todo);
         // Agrega el nuevo TODO al contexto
         addTodo(response.todo);
       } catch (error) {

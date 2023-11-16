@@ -23,7 +23,6 @@ export const Todolist = () => {
     {createtodo && 
      <Maininputs/>
     }
-      <button onClick={clearLocalStorage}>salite pa</button>
       <Todofunctions/>
     </>
   );

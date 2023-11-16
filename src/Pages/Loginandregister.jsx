@@ -8,17 +8,17 @@ import { useUser } from '../Context/Usercontext';
 
 const LoginAndRegister= () => {
   {/*inicio animación*/}
-  const {isLoggedIn} = useUser();//contexto
+  const {isLoggedIn} = useUser();
   const { toggleDarkMode,mostrarFormulario } = useDarkMode();
   const navigate = useNavigate();
   useEffect(() => {
-    if(isLoggedIn==='true'){
-      navigate('/ToDoList/aplication');
+    const redirect=()=>{
+      if(isLoggedIn){
+        navigate('/ToDoList/aplication')
+      }
     }
-    // Opcional: puedes devolver una función de limpieza (cleanup) si es necesario
-    return () => {
-      // Código de limpieza (se ejecuta cuando el componente se desmonta o cuando las dependencias cambian)
-    };
+    redirect();
+    console.log(isLoggedIn)
   }, [isLoggedIn]);
   return (
     <>

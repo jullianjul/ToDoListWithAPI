@@ -5,9 +5,10 @@ import './App.css';
 import Homem from './Homem';
 import Aplication from './Aplication';
 import { Li } from '../licomponents/Li';
-import DarkModeButton from '../Context/Darkmode';
+import DarkModeButton from '../licomponents/Darkmode';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { useUser } from '../Context/Usercontext';
+import Myprofile from './Myprofile';
 
 function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
@@ -52,6 +53,7 @@ function App() {
         <Route path='/ToDoList' element={<Homem />}/>
         <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoList/aplication' element={<Aplication/>} />
+        <Route path='/ToDoList/Myprofile' element={<Myprofile/>}/>
       </Routes>
     </>
   );
