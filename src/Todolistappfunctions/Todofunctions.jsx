@@ -8,6 +8,7 @@ import { FaPencil } from "react-icons/fa6";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaEdit,FaCheckCircle,FaTrashAlt } from "react-icons/fa";
 import { useDarkMode } from '../Context/DarkModeContext';
+import { Firsttimetutorial } from './firsttimetutorial';
 
 export const Todofunctions = () => {
   const { darkmode, toggleDarkMode } = useDarkMode();
@@ -39,8 +40,8 @@ export const Todofunctions = () => {
         const todos_amount=response.todos.length
         if(todos_amount===0){
           setItsFirstTime({
-            ...itsfirsttime,
-            firstimemessage:true
+            firstimemessage:true,
+            tutorial:true
           });
         }
       } catch (error) {
@@ -59,6 +60,11 @@ export const Todofunctions = () => {
       await Delete_TODO(_id);
     } catch (error) {
       console.error('Error al borrar el TODO:', error);
+    }
+    if (todos.length==0){
+      setItsFirstTime({
+        firstimemessage:true,
+      });
     }
   };
 
@@ -104,7 +110,7 @@ export const Todofunctions = () => {
 
   return (
     <>
-    {itsfirsttime.firstimemessage && 'papi tu primera vez'}
+    {itsfirsttime.tutorial && <Firsttimetutorial/>}
     {isEditing && <EditForm todo={selectedTodo} onUpdate={handleUpdate} onCancel={() => setIsEditing(false)} />}
       <div className={'contenedortotal'+' contenedortotal'+darkmode}>
         <div>

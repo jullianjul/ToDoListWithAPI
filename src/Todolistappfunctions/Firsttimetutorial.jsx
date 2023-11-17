@@ -8,8 +8,22 @@ import Carousel4thimg from '../../img/Carousel4thimg.jpg'
 import Carousel5thimg from '../../img/Carousel5thimg.jpg'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { useTodoContext } from '../Context/Todolistcontext';
+import { Modalfirsttimetutorial } from './Todomodals/Modalfirsttime';
+import { TiDeleteOutline } from "react-icons/ti";
 
 export const Firsttimetutorial = () => {
+  const {itsfirsttime,setItsFirstTime, } = useTodoContext();
+  const [modalhandler,setModalHandler]=useState(true)
+  const handlecancel = ()=>{
+    setItsFirstTime({
+      ...itsfirsttime,
+      tutorial:false,
+    });
+  }
+  const handlecontinue = ()=>{
+    setModalHandler(false);
+  }
   const [slides] = useState([
     {
       imageUrl: Carousel1stimg,
@@ -30,6 +44,7 @@ export const Firsttimetutorial = () => {
     {
       imageUrl: Carousel5thimg,
       description: 'Estos son los botones relacionados con tus tareas. A través de ellos, puedes realizar las siguientes acciones: eliminar tareas, actualizar el contenido de una tarea (funciona similar al crear tareas) y marcar como completada la tarea que desees.',
+      btn:'Finalizar tutorial'
     },
     // Agrega más objetos para más slides
   ]);
@@ -46,29 +61,43 @@ export const Firsttimetutorial = () => {
 
   return (
     <>
-    <div className='carousel-container-ALL'>
-        <div className="carousel-container-firsttime">
-            <div className='Arrow back_container'>
-            <p onClick={handlePrevSlide}><IoIosArrowBack/></p>
-        </div>
-                {/* Mostrar el contenido del slide actual */}
-                <div className={`carousel-slide ${slides[currentSlide].imageUrl}`}>
-                    {/* Contenido de tu slide */}
-                    <div className='Img-carousel-container'>
-                    <img src={slides[currentSlide].imageUrl} className='Slideimg' alt={`Slideimg ${currentSlide + 1}`} />
-                    </div>
-                    <div className='space_carousel'>
+    {modalhandler ?(<Modalfirsttimetutorial oncancel={handlecancel} oncontinue={handlecontinue}/>)     :      (
+         <>
+         <div className='exitcarousel exiticon'>
+            <TiDeleteOutline onClick={handlecancel} className='exiticontranslate'/>
+         </div>
+          <div className='carousel-container-ALL'>
+          <div className="carousel-container-firsttime">
+              <div className={'Arrow back_container'+' dissapearb'+currentSlide}>
+              <p onClick={currentSlide==0?null:handlePrevSlide} ><IoIosArrowBack/></p>
+              </div>
+                  {/* Mostrar el contenido del slide actual */}
+                  <div className={`carousel-slide ${slides[currentSlide].imageUrl}`}>
+                      {/* Contenido de tu slide */}
+                      <div className='Img-carousel-container'>
+                      <img src={slides[currentSlide].imageUrl} className='Slideimg' alt={`Slideimg ${currentSlide + 1}`} />
+                      </div>
+                      <div className='space_carousel'>
+  
+                      </div>
+                      <div className='description-container'>
+                        <p>{slides[currentSlide].description}</p>
+                      </div>
+                      
+                  </div>
+              <div className={'Arrow forward_container'+' dissapearf'+currentSlide}>
+                    <p onClick={currentSlide==4?null:handleNextSlide}><IoIosArrowForward/></p>
+              </div>
+          </div>
+      </div>
+      {currentSlide==4 &&
+              <div className={'carousel-slide-btn'}>
+              <button className={'carousel-slide-btn-btn'} onClick={handlecancel}>{slides[currentSlide].btn}</button>
+           </div>
+      }
+      </>
+    )    }
 
-                    </div>
-                    <div className='description-container'>
-                      <p>{slides[currentSlide].description}</p>
-                    </div>
-                </div>
-            <div className='Arrow forward_container'>
-                  <p onClick={handleNextSlide}><IoIosArrowForward/></p>
-            </div>
-        </div>
-    </div>
     
     </>
   );

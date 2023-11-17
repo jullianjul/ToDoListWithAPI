@@ -1,3 +1,17 @@
+.exitcarousel{
+    display: flex;
+    justify-content: end;
+    height: 0.0003px;
+}
+.exiticontranslate{
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 60px;
+    color: red;
+}
+.exiticontranslate:hover{
+    color: rgb(216, 65, 65);
+}
 .carousel-container-ALL{
     background-color: rgba(0, 0, 0, 0.768);
     height: 90vh;
@@ -38,9 +52,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     text-align: center;
     font-size: 20px;
     padding: 20px;
+}
+.carousel-slide-btn{
+    height: 0.00003px;
+    display: flex;
+    justify-content: center;
+}
+.carousel-slide-btn-btn{
+    transform: translateY(-50px);
+    z-index: 3;
+    background-color: rgb(89, 224, 61);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: solid 2px rgb(43, 255, 0);
+    box-shadow: 0px 4px 8px rgba(78, 197, 54, 0.7);
+    cursor: pointer;
+}
+.carousel-slide-btn-btn:hover{
+    background-color: rgb(77, 185, 56);
 }
 .Slideimg {
     height: 100%;
@@ -96,4 +132,25 @@
     .carousel-container-ALL{
         height: 108vh;
     }
+    .carousel-slide-btn{
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.768);
+    }
+    .carousel-slide-btn-btn{
+        transform: translateY(0px);
+        z-index: 3;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.dissapearb0, .dissapearf4{
+    color: rgba(41, 41, 41);
+    cursor: auto;
+}
+.dissapearb0:hover, .dissapearf4:hover{
+    color: rgba(41, 41, 41);
 }
