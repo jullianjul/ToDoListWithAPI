@@ -4,7 +4,8 @@ export const initialState = {
     isEditing: false,
     selectedTodo: null,
     createtodo: false,
-    isloading:false,
+    isloading:true,
+    
 };
 
 export const todoReducer = (statet, action) => {
@@ -69,7 +70,7 @@ export const todoReducer = (statet, action) => {
         case 'IsLoading':
                 return {
                     ...statet,
-                    isloading: !statet.isloading,
+                    isloading: action.payload,
                 };
 
         default:

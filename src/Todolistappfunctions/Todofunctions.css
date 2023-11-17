@@ -196,6 +196,9 @@
     color:rgb(211, 245, 16) ;
 }
 @media(max-width:650px){
+    .no-todos-message{
+        font-size: 20px;
+    }
     .Mainbuttons_todolist{
         flex-direction: column;
         height: 100px;

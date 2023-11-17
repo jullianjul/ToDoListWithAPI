@@ -9,6 +9,7 @@ import DarkModeButton from '../licomponents/Darkmode';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { useUser } from '../Context/Usercontext';
 import Myprofile from './Myprofile';
+import { Firsttimetutorial } from '../Todolistappfunctions/firsttimetutorial';
 
 function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
@@ -54,6 +55,7 @@ function App() {
         <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoList/aplication' element={<Aplication/>} />
         <Route path='/ToDoList/Myprofile' element={<Myprofile/>}/>
+        <Route path='/ToDoList/Carousel' element={<Firsttimetutorial/>}/>
       </Routes>
     </>
   );

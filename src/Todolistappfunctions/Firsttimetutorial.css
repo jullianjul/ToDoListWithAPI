@@ -1,0 +1,42 @@
+.carousel-container-ALL{
+    background-color: aqua;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-container-firsttime{
+    height: 80%;
+    width: 60%;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.carousel-slide{
+    height: 100%;
+    width: 90%;
+    background-color: aqua;
+}
+
+.Img-carousel-container{
+    background-color: brown;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description-container{
+    height: 30%;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Slideimg{
+    height: 100%;
+    width: 50%;
+    object-fit: cover;
+}

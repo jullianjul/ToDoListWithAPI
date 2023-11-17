@@ -4,11 +4,13 @@ import { Create_Todo } from '../../ServicesApi/Apifecth';
 import { useTodoContext } from '../../Context/Todolistcontext';
 import './Maininputs.css';
 import { TiDeleteOutline } from "react-icons/ti";
+import { useDarkMode } from '../../Context/DarkModeContext';
 
 export const Maininputs = () => {
   const { state } = useUser();
   const { currentUser } = state;
-  const { addTodo,createtodohandler } = useTodoContext(); // Utiliza el hook useTodoContext
+  const { addTodo,createtodohandler,itsfirsttime,setItsFirstTime, } = useTodoContext(); // Utiliza el hook useTodoContext
+  const {darkmode}=useDarkMode();
 
   // Estados para los valores del título y la descripción
   const [title, setTitle] = useState('');
@@ -75,6 +77,10 @@ export const Maininputs = () => {
         // Detener la carga después de que la petición se complete (éxito o error)
         setLoading(false);
         createtodohandler();
+        setItsFirstTime({
+          ...itsfirsttime,
+          firstimemessage:false
+        });
       }
 
       // Limpiar los campos después de enviar el formulario
@@ -87,7 +93,7 @@ export const Maininputs = () => {
   return (
     <>
       <form onSubmit={handleSubmit} className='form_create_todos'>
-        <div className='form_container'>
+        <div className={'form_container'+' form_container'+darkmode}>
           <div className="buttondiv">
           {inputerror &&    
         <>
@@ -103,9 +109,9 @@ export const Maininputs = () => {
                     <TiDeleteOutline className='disableinputerror' onClick={disableinputerror} />
                 </div>
         }
-            <TiDeleteOutline onClick={createtodohandler} className='exiticon' />
+            <TiDeleteOutline onClick={createtodohandler} className={'exiticon'+' exiticon'+darkmode} />
           </div>
-          <div className='form_container_labelinputs'>
+          <div className={'form_container_labelinputs'+' form_container_labelinputs'+darkmode}>
           <label className='form_label'>
             <h6 className='todotitles'>Titulo:</h6>
             <input type="text" className='formtodo_inputs' value={title} onChange={handleTitleChange} />

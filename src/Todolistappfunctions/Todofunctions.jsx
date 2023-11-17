@@ -24,7 +24,9 @@ export const Todofunctions = () => {
     setSelectedTodo,
     createtodohandler,
     dispatch,
-    isloading // Utiliza el dispatch del contexto para enviar acciones al reducer
+    isloading,
+    itsfirsttime,
+    setItsFirstTime, // Utiliza el dispatch del contexto para enviar acciones al reducer
   } = useTodoContext(); // Utiliza el hook useTodoContext
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -32,14 +34,19 @@ export const Todofunctions = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch({type:'IsLoading'})
         const response = await Get_TODOS(currentUser._id);
         dispatch({ type: 'GET_TODOS', payload: response.todos });
-        console.log(response.todos.length)
+        const todos_amount=response.todos.length
+        if(todos_amount===0){
+          setItsFirstTime({
+            ...itsfirsttime,
+            firstimemessage:true
+          });
+        }
       } catch (error) {
         console.error('Error al obtener la lista de TODOS:', error);
       }finally{
-        dispatch({type:'IsLoading'})
+        dispatch({type:'IsLoading', payload: false})
       }
     };
 
@@ -62,7 +69,12 @@ export const Todofunctions = () => {
 
   const handleMarkCompleted = async (todo) => {
     try {
-      const updatedTodo = { ...todo, isCompleted: true };
+      const date = new Date();
+      var dd = date.getDate();
+      var mm = date.getMonth() + 1;
+      var yyyy = date.getFullYear();
+      var finalDate = yyyy + '-' + mm + '-' + dd;
+      const updatedTodo = { ...todo, isCompleted: true,finishDate:finalDate };
       dispatch({ type: 'MARK_COMPLETED', payload: updatedTodo });
       await Update_Todo(updatedTodo);
     } catch (error) {
@@ -92,6 +104,7 @@ export const Todofunctions = () => {
 
   return (
     <>
+    {itsfirsttime.firstimemessage && 'papi tu primera vez'}
     {isEditing && <EditForm todo={selectedTodo} onUpdate={handleUpdate} onCancel={() => setIsEditing(false)} />}
       <div className={'contenedortotal'+' contenedortotal'+darkmode}>
         <div>
@@ -123,8 +136,9 @@ export const Todofunctions = () => {
               </div>
             ) : (
               filteredTodos.length === 0 ? (
+
                 <div className={'no-todos-message'+' no-todos-message'+darkmode}>
-                  <p>No hay tareas que coincidan con la búsqueda o filtro seleccionado.</p>
+                  {itsfirsttime.firstimemessage ? <p>Bienvenido a Tu lista maestra {currentUser.firstName} <br /> crea tu primera tarea para comenzar tu aventura</p> : <p>No hay tareas que coincidan con la búsqueda o filtro seleccionado.</p>}
                 </div>
               ) :
               (filteredTodos.map((todo) => (

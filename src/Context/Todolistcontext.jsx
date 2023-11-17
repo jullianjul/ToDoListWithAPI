@@ -1,5 +1,5 @@
 // TodoContext.jsx
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
 import { useUser } from './Usercontext';
 import { todoReducer, initialState } from '../Reducer/useReducertodo';
 import { Get_TODOS } from '../ServicesApi/Apifecth';
@@ -13,7 +13,10 @@ export const useTodoContext = () => {
 export const TodoProvider = ({ children }) => {
   const { state } = useUser();
   const [statet, dispatch] = useReducer(todoReducer, initialState);
-
+  const [itsfirsttime, setItsFirstTime]= useState({
+    tutorial:false,
+    firstimemessage:false,
+  });
   const addTodo = (newTodo) => {
     dispatch({ type: 'CREATE_TODO', payload: newTodo });
   };
@@ -55,7 +58,9 @@ export const TodoProvider = ({ children }) => {
         createtodo: statet.createtodo,
         createtodohandler,
         isloading: statet.isloading,
-        dispatch
+        dispatch,
+        itsfirsttime,
+        setItsFirstTime
       }}
     >
       {children}
