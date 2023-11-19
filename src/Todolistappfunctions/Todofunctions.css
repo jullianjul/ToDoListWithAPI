@@ -14,16 +14,22 @@
     padding: 10px 20px;
     background-color: yellow;
     border-radius: 20px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: solid 2px rgb(0, 0, 0);
     cursor: pointer;
 }
 .contenedortotal{
     width: 100%;
     padding: 30px;
+    min-height: 630px;
 }
 .ALLTODOS{
     background-color: #47a2bebd;
     height: 80vh;
+    min-height: 400pX;
     overflow-y: auto;
     overflow-x: auto;
     padding: 10px;
@@ -76,16 +82,18 @@
 .Todo_information{
     width: 80%;
     min-height: 70px;
+    max-height: 120px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
+    justify-content: start;
+    overflow: auto;  /* Cambié a overflow-y para controlar el desbordamiento vertical */
 }
 .Todo_informationtrue{
     color: rgb(192, 192, 192);
 }
 .Todo-title{
     font-size:30px;
+    white-space: nowrap; /* Evita el retorno de línea dentro del título */
 }
 .titletodotrue{
     color: rgb(211, 245, 16);
@@ -134,6 +142,9 @@
 .check:hover{
     background-color: white;
     color: rgb(0, 255, 0);
+}
+.undo-btn{
+    font-size: 50px;
 }
 .mainbuttons-btn{
     background-color:  #47a2bebd;

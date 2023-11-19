@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer, useEffect, useState } fro
 import { useUser } from './Usercontext';
 import { todoReducer, initialState } from '../Reducer/useReducertodo';
 import { Get_TODOS } from '../ServicesApi/Apifecth';
+import { Update_Todo } from '../ServicesApi/Apifecth';
 
 const TodoContext = createContext();
 
@@ -41,6 +42,16 @@ export const TodoProvider = ({ children }) => {
     dispatch({ type: 'SET_SELECTED_TODO', payload: todo });
   };
 
+  const Undomarkcompleted = async (todo)=>{
+    try {
+      const updatedTodo = { ...todo, isCompleted: false };
+      dispatch({ type: 'MARK_COMPLETED', payload: updatedTodo });
+      await Update_Todo(updatedTodo);
+    } catch (error) {
+      console.error('Error al marcar como completada:', error);
+    }
+  }
+
   // Otras funciones según sea necesario
 
   return (
@@ -60,7 +71,8 @@ export const TodoProvider = ({ children }) => {
         isloading: statet.isloading,
         dispatch,
         itsfirsttime,
-        setItsFirstTime
+        setItsFirstTime,
+        Undomarkcompleted
       }}
     >
       {children}

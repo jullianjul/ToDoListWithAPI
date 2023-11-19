@@ -8,14 +8,18 @@
     margin-top: 10px;
     font-size: 60px;
     color: red;
+    z-index: 3;
 }
 .exiticontranslate:hover{
     color: rgb(216, 65, 65);
 }
 .carousel-container-ALL{
     background-color: rgba(0, 0, 0, 0.768);
-    height: 90vh;
+    height: 100%;
+    width: 100%;
+    min-height: 630px;
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
 }
@@ -63,7 +67,6 @@
     justify-content: center;
 }
 .carousel-slide-btn-btn{
-    transform: translateY(-50px);
     z-index: 3;
     background-color: rgb(89, 224, 61);
     padding: 20px;
@@ -126,20 +129,13 @@
         height: 100%;
     }
     .description-container{
-        font-size: 16px;
+        font-size: 13px;
         padding: 5px;
     }
     .carousel-container-ALL{
-        height: 108vh;
-    }
-    .carousel-slide-btn{
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.768);
+        height: 110vh;
     }
     .carousel-slide-btn-btn{
-        transform: translateY(0px);
         z-index: 3;
         padding: 10px 20px;
         display: flex;

@@ -6,6 +6,7 @@ import Carousel2ndimg from '../../img/Carousel2ndimg.jpg'
 import Carousel3rdimg from '../../img/Carousel3rdimg.jpg'
 import Carousel4thimg from '../../img/Carousel4thimg.jpg'
 import Carousel5thimg from '../../img/Carousel5thimg.jpg'
+import Carousel6thimg from '../../img/Carousel6thimg.jpg'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useTodoContext } from '../Context/Todolistcontext';
@@ -44,6 +45,10 @@ export const Firsttimetutorial = () => {
     {
       imageUrl: Carousel5thimg,
       description: 'Estos son los botones relacionados con tus tareas. A través de ellos, puedes realizar las siguientes acciones: eliminar tareas, actualizar el contenido de una tarea (funciona similar al crear tareas) y marcar como completada la tarea que desees.',
+    },
+    {
+      imageUrl: Carousel6thimg,
+      description: 'En la sección de tareas completadas, se encuentran disponibles dos opciones: "Desmarcar tarea" y "Eliminar tarea". El botón de "Desmarcar tarea" tiene la función de actualizar el estado de la tarea, trasladándola a la sección de pendientes.',
       btn:'Finalizar tutorial'
     },
     // Agrega más objetos para más slides
@@ -82,19 +87,19 @@ export const Firsttimetutorial = () => {
                       </div>
                       <div className='description-container'>
                         <p>{slides[currentSlide].description}</p>
+                        {currentSlide==5 &&
+                          <div className={'carousel-slide-btn'}>
+                                <button className={'carousel-slide-btn-btn'} onClick={handlecancel}>{slides[currentSlide].btn}</button>
+                            </div>
+                        }
                       </div>
                       
                   </div>
               <div className={'Arrow forward_container'+' dissapearf'+currentSlide}>
-                    <p onClick={currentSlide==4?null:handleNextSlide}><IoIosArrowForward/></p>
+                    <p onClick={currentSlide==5?null:handleNextSlide}><IoIosArrowForward/></p>
               </div>
           </div>
       </div>
-      {currentSlide==4 &&
-              <div className={'carousel-slide-btn'}>
-              <button className={'carousel-slide-btn-btn'} onClick={handlecancel}>{slides[currentSlide].btn}</button>
-           </div>
-      }
       </>
     )    }
 

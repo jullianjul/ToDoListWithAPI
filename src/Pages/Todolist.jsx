@@ -3,7 +3,7 @@ import { useUser } from '../Context/Usercontext';
 import { useNavigate } from "react-router-dom";
 import { useTodoContext } from '../Context/Todolistcontext';
 import { Todofunctions } from '../Todolistappfunctions/Todofunctions';
-import { Maininputs } from '../Todolistappfunctions/Inputs/Maininputs';
+import { Maininputs } from '../Todolistappfunctions/Todomodals/Maininputs';
 import './Todolist.css'
 
 export const Todolist = () => {

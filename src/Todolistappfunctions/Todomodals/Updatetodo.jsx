@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Updatetodo.css'
 import { TiDeleteOutline } from "react-icons/ti";
-import { useDarkMode } from '../Context/DarkModeContext';
+import { useDarkMode } from '../../Context/DarkModeContext';
 
 const EditForm = ({ todo, onUpdate, onCancel }) => {
   const { darkmode, toggleDarkMode } = useDarkMode();

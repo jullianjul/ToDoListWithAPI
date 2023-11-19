@@ -1,0 +1,14 @@
+.ContainerModaldatapassword{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(2, 2, 2, 0.514);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Modaldatapassword{
+    background-color: aquamarine;
+    width: 40%;
+    height: 70%;
+}

@@ -9,12 +9,13 @@ import DarkModeButton from '../licomponents/Darkmode';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { useUser } from '../Context/Usercontext';
 import Myprofile from './Myprofile';
-import { Firsttimetutorial } from '../Todolistappfunctions/firsttimetutorial';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const { darkmode, toggleDarkMode } = useDarkMode();
   const { state } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
   const { currentUser, isLoggedIn } = state; // Accedes a las propiedades desde el estado del reducer
+  const navigate=useNavigate();
   
     let nameuser = currentUser ? currentUser.firstName : '';
     useEffect(() => {
@@ -35,7 +36,7 @@ function App() {
       {isLoggedIn ? (
         <>
         <h1 className='titulos'>Lista Maestra de {nameuser}</h1>
-        <button className='btn-miperfil'>Mi perfil</button>
+        <button className='btn-miperfil' onClick={()=> navigate('/ToDoList/myprofile')}>Mi perfil</button>
         </>
       ):
       (<h1 className='titulos'>Tu lista Maestra</h1>)
@@ -54,8 +55,7 @@ function App() {
         <Route path='/ToDoList' element={<Homem />}/>
         <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoList/aplication' element={<Aplication/>} />
-        <Route path='/ToDoList/Myprofile' element={<Myprofile/>}/>
-        <Route path='/ToDoList/Carousel' element={<Firsttimetutorial/>}/>
+        <Route path='/ToDoList/myprofile' element={<Myprofile/>} />
       </Routes>
     </>
   );

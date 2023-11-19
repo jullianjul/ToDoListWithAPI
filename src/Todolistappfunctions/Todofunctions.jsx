@@ -3,9 +3,9 @@ import './Todofunctions.css';
 import { useUser } from '../Context/Usercontext';
 import { Delete_TODO, Get_TODOS, Update_Todo } from '../ServicesApi/Apifecth';
 import { useTodoContext } from '../Context/Todolistcontext';
-import EditForm from './Updatetodo';
+import EditForm from './Todomodals/Updatetodo';
 import { FaPencil } from "react-icons/fa6";
-import { IoSearchSharp } from "react-icons/io5";
+import { IoSearchSharp,IoArrowUndoCircleSharp } from "react-icons/io5";
 import { FaEdit,FaCheckCircle,FaTrashAlt } from "react-icons/fa";
 import { useDarkMode } from '../Context/DarkModeContext';
 import { Firsttimetutorial } from './firsttimetutorial';
@@ -27,7 +27,8 @@ export const Todofunctions = () => {
     dispatch,
     isloading,
     itsfirsttime,
-    setItsFirstTime, // Utiliza el dispatch del contexto para enviar acciones al reducer
+    setItsFirstTime,
+    Undomarkcompleted // Utiliza el dispatch del contexto para enviar acciones al reducer
   } = useTodoContext(); // Utiliza el hook useTodoContext
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -60,11 +61,15 @@ export const Todofunctions = () => {
       await Delete_TODO(_id);
     } catch (error) {
       console.error('Error al borrar el TODO:', error);
+    }finally{
+      console.log(todos.length)
     }
+    
     if (todos.length==0){
       setItsFirstTime({
         firstimemessage:true,
       });
+      console.log(itsfirsttime.firstimemessage);
     }
   };
 
@@ -120,7 +125,7 @@ export const Todofunctions = () => {
               <button onClick={() => setCurrentFilter('completadas')} className={'mainbuttons-btn '+'completed'+currentFilter+' completed'+darkmode+currentFilter}>Completadas</button>
             </div>
             <button onClick={() => dispatch({ type: 'TOGGLE_CREATE_TODO' })} className='activatecreatetodo'>
-              Crear una tarea <FaPencil className='iconpencil' />
+              Crear una tarea  <FaPencil className='iconpencil' />
             </button>
             <div className='searcher'>
               <input
@@ -155,6 +160,9 @@ export const Todofunctions = () => {
                     {currentFilter==='pendientes' ? <p>creada el: {todo.finishDate.substring(0, 10)}</p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
                   </div>
                   <div className='Todo_buttons'>
+                  {currentFilter=='completadas' &&
+                     <p onClick={() => Undomarkcompleted(todo)} className={`todo-btn undo-btn edit edit${darkmode}`}><IoArrowUndoCircleSharp /></p>
+                    }
                     <p onClick={() => handleDelete(todo._id)} className='todo-btn trash'><FaTrashAlt /></p>
                     {!todo.isCompleted && (
                       <>

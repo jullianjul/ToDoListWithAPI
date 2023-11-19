@@ -1,0 +1,14 @@
+.Container_Modal_Update_User_Form{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(2, 2, 2, 0.514);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Subcontainer_Modal_Update_user{
+    background-color: aquamarine;
+    width: 40%;
+    height: 70%;
+}

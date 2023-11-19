@@ -1,6 +1,9 @@
 .Modalfirsttime_container_ALL{
-    height: 90vh;
+    height: 100%;
+    width: 100%;
+    min-height: 630px;
     background-color: rgba(0, 0, 0, 0.768);
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -3,6 +3,8 @@ import './Loginandregister.css';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
 import { useUser } from '../Context/Usercontext';
+import Alertnotlog from './Alertnotlog';
+import Myprofilelogic from '../Logic/Myprofilelogic';
 
 const Myprofile= () => {
   {/*inicio animación*/}
@@ -13,11 +15,10 @@ const Myprofile= () => {
   return (
     <>
      {isLoggedIn ? (
-        ''
+        <Myprofilelogic/>
      )
-
      :
-     ('')}
+     (<Alertnotlog/>)}
     </>
   );
 }
