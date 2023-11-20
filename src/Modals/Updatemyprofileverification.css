@@ -6,31 +6,77 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 500px;
 }
 .Modaldatapassword{
-    background-color: aquamarine;
+    background-color: #336b86;
     width: 40%;
     height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: start;
+    border-radius: 20px;
+    min-width: 320px;
 }
-.Modaldatapassword_subcontainer{
+.Modaldatapasswordtrue{
+    background-color: #1f1f1f;
+}
+.Subcontainer_modaldatapassword{
+    background-color: #336b86;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.Modaldatapassword_subsubcontainer{
     height: 60%;
     width: 70%;
-    background-color: blue;
+    background-color: #8fafc4;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     text-align: center;
+    box-shadow: 0px 9px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+.Subcontainer_modaldatapasswordtrue{
+    background-color: #1f1f1f;
+}
+.Modaldatapassword_subsubcontainertrue{
+    background-color: #4b4b4b;
+}
+.Modaldatapassword_title{
+    color: rgb(0, 0, 0);
+    background-color: #d0d9dd;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.ModalUpdateuser_labelpasswordtrue{
+    color: white;
+}
+.verificate_pasword_input{
+    border-radius: 20px;
+    border: none;
+    padding: 0 10px;
+}
+.verificate_pasword_input:focus{
+    outline: 2px solid #336b86;
+}
+.verificate_pasword_inputtrue:focus{
+    outline: 2px solid #088054;
+}
+.ModalUpdateuser_labelpassword{
+    margin-bottom: 10px;
 }
 .Exit_modal_update_div{
     width: 100%;
-    background-color: red;
     display: flex;
     justify-content: end;
+    height: 0.003px;
 }
 .Modaldatapassword_error{
     display: flex;
@@ -40,4 +86,87 @@
 .verificate_pasword_input{
     width: 60%;
     height: 10%;
+}
+.Modaldatapassword-btn{
+    border: solid 2px rgb(115, 212, 167);
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: rgb(137, 255, 200);
+    padding: 10px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+.Modaldatapassword-btn:hover{
+    background-color: rgb(102, 187, 147);
+    border-color:rgb(102, 187, 147);
+}
+.Modaldatapassword-btntrue{
+    color: white;
+    background-color: #00a86b;
+    border-color: #00a86b;
+}
+.Modaldatapassword-btntrue:hover{
+    background-color: #088054;
+    border-color: #065f3f;
+}
+.Modaldatapassword_error{
+    margin-top: 10px;
+    padding: 1px 10px; 
+    background-color: rgba(255, 0, 0, 0.199);
+    border-radius: 20px;
+    color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.Modaldatapassword_error_information{
+    margin-right: 5px;
+}
+.close-modal-alert{
+    font-size: 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.close-modal-alert:hover{
+    color: rgb(236, 85, 85);
+}
+.Close_Update_modal{
+    font-size: 50px;
+    z-index: 3;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.Close_Update_modal:hover{
+    color: red;
+}
+.Close_Update_modaltrue{
+    color: red;
+}
+.Close_Update_modaltrue:hover{
+    color: rgb(172, 52, 52);
+}
+
+@media(max-width:900px){
+    .Modaldatapassword{
+        width: 60%;
+    }
+}
+
+@media(max-width:600px){
+    .Modaldatapassword{
+        width: 100%;
+    }
+    .Modaldatapassword_title, .ModalUpdateuser_labelpassword{
+        font-size: 18px;
+    }
+    .close-modal-alert{
+        font-size: 30px;
+    }
+    .Modaldatapassword_subsubcontainer{
+        width: 95%;
+    }
 }

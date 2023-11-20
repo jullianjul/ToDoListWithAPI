@@ -5,6 +5,7 @@ import { useUser } from '../Context/Usercontext';
 import './Updateuserform.css'
 import ModalUpdateinput from '../Inputs/ModalUpdateinput';
 import { Update_user } from '../ServicesApi/Apifecth';
+import { TiDeleteOutline } from "react-icons/ti";
 
 const Updateuserform = () => {
   const { isLoggedIn, state,dispatch,formupdateuser,setFormUpdateUser } = useUser();
@@ -49,41 +50,46 @@ const Updateuserform = () => {
         console.error('Error al actualizar el usuario', error);
       }
       setFormUpdateUser(false);
+    }else{
+      setFormUpdateUser(false);
     }
   }
 
   return (
     <>
       <div className={'ContainerModaldatapassword' + ' ContainerModaldatapassword' + darkmode}>
-        <div className='Subcontainer_Modal_Update_user'>
+        <div className={'Subcontainer_Modal_Update_user'+' Subcontainer_Modal_Update_user'+darkmode}>
             <div className='Exit_modal_update_div'>
-                        <button onClick={()=>setFormUpdateUser(false)}>x</button>
+               <p className={'Close_Update_modal'+' Close_Update_modal'+darkmode} onClick={()=>setFormUpdateUser(false)}><TiDeleteOutline/></p>
             </div>
-            <form action="" className='Update_User_Form'>
-                <div className='Subcontainer_Update_User_Form'>
-                    <label htmlFor="">Nombre:</label>
+            <form action="" id='FormUpdateuser' className={'Update_User_Form'+' Update_User_Form'+darkmode}>
+                <div className={'Subcontainer_Update_User_Form'+' Subcontainer_Update_User_Form'+darkmode}>
+                  <p className={'Info_modal_update'+' Info_modal_update'+darkmode}>Cambie los datos que deseé cambiar:</p>
+                  <div className='label-inputs-updateuser'>
                     <ModalUpdateinput attributes={{
-                      className:'modalupdateuserinput',
-                      defaultValue:currentUser.firstName,
-                      name:'Name'
-                    }} handlemodalupdateuser={handlemodalupdateuser}/>
-                    <label htmlFor="">Apellido:</label>
-                    <ModalUpdateinput attributes={{
-                      className:'modalupdateuserinput',
-                      defaultValue:currentUser.lastName,
-                      name:'Lastname'
-                    }} handlemodalupdateuser={handlemodalupdateuser}/>
-                    <label htmlFor="">Contraseña:</label>
-                    <ModalUpdateinput attributes={{
-                      className:'modalupdateuserinput',
-                      defaultValue:currentUser.password,
-                      name:'password'
-                    }} handlemodalupdateuser={handlemodalupdateuser}/>
+                        title:'Nombre:',
+                        className:`modalupdateuserinput modalupdateuserinput${darkmode} name${nameerror}`,
+                        defaultValue:currentUser.firstName,
+                        name:'Name'
+                      }} handlemodalupdateuser={handlemodalupdateuser}/>
+                      <ModalUpdateinput attributes={{
+                        title:'Apellido:',
+                        className:`modalupdateuserinput modalupdateuserinput${darkmode} lastname${nameerror}`,
+                        defaultValue:currentUser.lastName,
+                        name:'Lastname'
+                      }} handlemodalupdateuser={handlemodalupdateuser}/>
+                      <ModalUpdateinput attributes={{
+                        title:'Contraseña:',
+                        className:`modalupdateuserinput modalupdateuserinput${darkmode} password${nameerror}`,
+                        defaultValue:currentUser.password,
+                        name:'password'
+                      }} handlemodalupdateuser={handlemodalupdateuser}/>
+                  </div>
                 </div>
             </form>
             <div className='Modal_Update_buttons'>
-              <button onClick={handlesubmit}>Actualizar</button>
-              <button onClick={()=>setFormUpdateUser(false)}>Cancelar</button>
+              <button onClick={handlesubmit} className={'Updateuser_form_btn'+' Updateuser_form_btn'+darkmode}>Actualizar</button>
+              <button onClick={()=>setFormUpdateUser(false)} className={'Updateuser_form_btn-cancel'+' Updateuser_form_btn-cancel'+darkmode}>Cancelar</button>
             </div>
         </div>
       </div>

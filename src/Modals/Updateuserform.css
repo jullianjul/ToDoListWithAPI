@@ -1,34 +1,128 @@
 .Subcontainer_Modal_Update_user{
-    background-color: aquamarine;
     width: 40%;
     height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #336b86;
+    border-radius: 20px;
+    min-width: 320px;
+}
+.Subcontainer_Modal_Update_usertrue{
+    background-color:#1f1f1f ;
 }
 .Update_User_Form{
     height: 80%;
     width: 100%;
-    background-color: blue;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
 }
 .Subcontainer_Update_User_Form{
-    width: 80%;
+    width: 70%;
     height: 80%;
     display: flex;
     flex-direction: column;
-    background-color: blueviolet;
+    background-color: #8fafc4;
+    border-radius: 20px;
+    padding: 20px;
+    justify-content: start;
+    align-items: center;
+    box-shadow: 0px 9px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+.Subcontainer_Update_User_Formtrue{
+    background-color: #4b4b4b;
 }
 .Modal_Update_buttons{
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(255, 127, 227);
     margin-top: 15px;
 }
+.label-inputs-updateuser{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+}
 .modalupdateuserinput{
-    width: 80%;
+    height: 15%;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px; 
+}
+.modalupdateuserinput:focus{
+    outline: 3px solid #336b86;
+}
+.modalupdateuserinputtrue:focus{
+    outline: 3px solid #088054;
+}
+.title_input_updateuser{
+    margin: 5px 0px;
+}
+.title_input_updateusertrue{
+    color: white;
+}
+
+.Updateuser_form_btn{
+    border: solid 2px rgb(115, 212, 167);
+    border-radius: 20px;
+    background-color: rgb(137, 255, 200);
+    padding: 10px 20px;
+    margin-right: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+.Updateuser_form_btn:hover{
+    background-color: rgb(102, 187, 147);
+    border-color:rgb(102, 187, 147);
+}
+.Updateuser_form_btntrue{
+    color: white;
+    background-color: #00a86b;
+    border-color: #00a86b;
+}
+.Updateuser_form_btntrue:hover{
+    background-color: #088054;
+    border-color: #065f3f;
+}
+.Updateuser_form_btn-cancel{
+    border: solid 2px rgb(247, 32, 32);
+    border-radius: 20px;
+    background-color: rgb(255, 49, 49);
+    padding: 10px 20px;
+    margin-left: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+.Updateuser_form_btn-cancel:hover{
+    background-color: rgb(196, 36, 36); 
+    border-color: rgb(196, 36, 36);
+}
+.Updateuser_form_btn-canceltrue{
+    background-color: rgb(209, 139, 8);
+    border-color: rgb(209, 139, 8);
+}
+.Updateuser_form_btn-canceltrue:hover{
+    background-color: rgb(252, 168, 12);
+}
+.Info_modal_update{
+    text-align: center;
+}
+.Info_modal_updatetrue{
+    color: white;
+}
+
+@media(max-width:900px){
+    .Subcontainer_Modal_Update_user{
+        width: 70%;
+    }
+}
+@media(max-width:600px){
+    .Subcontainer_Modal_Update_user{
+        width: 95%;
+    }
 }

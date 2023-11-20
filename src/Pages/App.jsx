@@ -16,15 +16,20 @@ function App() {
   const { state } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
   const { currentUser, isLoggedIn } = state; // Accedes a las propiedades desde el estado del reducer
   const navigate=useNavigate();
-  
-    let nameuser = currentUser ? currentUser.firstName : '';
-    useEffect(() => {
-      if(nameuser.length>10){
-        nameuser=(nameuser.substring(0,10)+'...')
-      }else{
-        nameuser=nameuser
+  const [nameuser, setNameUser] = useState('');
+
+  useEffect(() => {
+    const cambiarnombre = () => {
+      if (currentUser && currentUser.firstName.length > 10) {
+        setNameUser(currentUser.firstName.substring(0, 10) + '...');
+      } else {
+        setNameUser(currentUser.firstName);
       }
-    }, [nameuser]);
+    };
+  
+    cambiarnombre();
+  }, [currentUser]);
+  
 
 
 
