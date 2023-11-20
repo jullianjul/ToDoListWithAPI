@@ -2,7 +2,7 @@ import React from 'react'
 import './Register.css'
 import { useDarkMode } from '../Context/DarkModeContext'
 
-export const Register = ({attributes, handleChangeregister, props}) => {
+export const Register = ({attributes, handleChangeregister}) => {
   const { darkmode, toggleDarkMode } = useDarkMode();
   return (
     <>

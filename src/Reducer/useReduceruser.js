@@ -22,8 +22,13 @@ export const userReducer = (state, action) => {
       case 'VERIFY_USER':
         return{
           ...state,
-          isVerified:!state.isVerified
+          isVerified:action.payload
         }
+      case 'UPDATE_USER':
+        return {
+          ...state,
+          currentUser:action.payload
+        };
       case 'LOGOUT':
         return initialState;
       default:

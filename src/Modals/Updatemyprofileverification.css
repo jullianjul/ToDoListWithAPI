@@ -11,4 +11,33 @@
     background-color: aquamarine;
     width: 40%;
     height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.Modaldatapassword_subcontainer{
+    height: 60%;
+    width: 70%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.Exit_modal_update_div{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: end;
+}
+.Modaldatapassword_error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.verificate_pasword_input{
+    width: 60%;
+    height: 10%;
 }

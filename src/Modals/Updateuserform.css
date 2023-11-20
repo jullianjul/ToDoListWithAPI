@@ -1,14 +1,34 @@
-.Container_Modal_Update_User_Form{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(2, 2, 2, 0.514);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .Subcontainer_Modal_Update_user{
     background-color: aquamarine;
     width: 40%;
     height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Update_User_Form{
+    height: 80%;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Subcontainer_Update_User_Form{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+}
+.Modal_Update_buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 127, 227);
+    margin-top: 15px;
+}
+.modalupdateuserinput{
+    width: 80%;
 }
