@@ -152,4 +152,21 @@
   .linktoformdark:hover{
     color: rgb(172, 172, 172);
   }
-  
+
+  .boton_register_showpass{
+    font-size: 30px;
+    margin-right:20px;
+    margin-top: 10%;
+    cursor: pointer;
+  }
+  .boton_register_showpassdark{
+    color: #fdbd46;
+  }
+  .cajapassword{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cajapassword input{
+    width: 120%;
+  }

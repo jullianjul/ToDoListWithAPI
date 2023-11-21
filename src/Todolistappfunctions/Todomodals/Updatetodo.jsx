@@ -33,7 +33,7 @@ const EditForm = ({ todo, onUpdate, onCancel }) => {
           <div className={'edit-exitbutton-container'+' edit-exitbutton-container'+darkmode}>
             {editerror &&   
           <div className='form_create_todo_inputerror'>
-              <p>Ningún campo puede tener menos de 3 carácteres</p>
+              <p>Todos los campos deben tener más de 3 carácteres</p>
               <TiDeleteOutline className='disableinputerror' onClick={editinghandler} />
          </div>
             }

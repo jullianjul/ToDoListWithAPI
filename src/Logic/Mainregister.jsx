@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import './Mainregister.css';
 import { useUser } from '../Context/Usercontext';
 import { Create_user } from '../ServicesApi/Apifecth';
-
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Mainregister= () => {
   {/*inicio animación*/}
@@ -30,6 +31,7 @@ const Mainregister= () => {
   const [Emailalreadyregister, setEmailAlreadyRegister]= useState(false);
   const [nameerror, setNameError]= useState(false)
   const [registersuccess, setRegisterSuccess]= useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); // Nuevo estado para controlar la visibilidad de la contraseña
 
 
   function handleChangeregister(attributes,Value){
@@ -181,6 +183,13 @@ const Mainregister= () => {
     // Lógica para guardar los datos del usuario en la pagina inmediatamente se registra
   }
   {/* end register success functions*/}
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const renderPasswordInputType = () => {
+    return passwordVisible ? 'text' : 'password';
+  };
 
   return (
     <>
@@ -305,15 +314,20 @@ const Mainregister= () => {
                 {EmailError && 
                 <label htmlFor="" className='label-error'>Debe ingresar un correo valido</label>
                 }
-                    <Register attributes={{
+                <div className='cajapassword'>
+                <Register attributes={{
                   id:'Contraseña:',
                   name: 'Passworduser',
-                  type: 'password',
+                  type: renderPasswordInputType(),
                   placeholder: 'Ingrese una Contraseña',
                   Check: passwordErrorR ? 'input-error' : 'input_Style'
                 }
                 } handleChangeregister={handleChangeregister} 
                 />
+                <p type="button" onClick={handleTogglePasswordVisibility} className={darkmode ? 'boton_register_showpass boton_register_showpassdark' : 'boton_register_showpass'}>
+                  {passwordVisible ?  <FaRegEye/>  :<FaRegEyeSlash/>}
+                </p>
+                </div>
                 {passwordErrorR && 
                 <label htmlFor="" className='label-error'>contraseña invalida o incompleta</label>
                 }

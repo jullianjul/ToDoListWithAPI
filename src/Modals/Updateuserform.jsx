@@ -19,17 +19,19 @@ const Updateuserform = () => {
   const [nameerror,setNameError]=useState(false);
   const [passworderror,setPasswordErrorr]=useState(false);
   const [lastnameerror, setLastnameError]=useState(false);
+  const [formerror, setFormError]=useState(false);
 
   function handlemodalupdateuser(attributes, Value){
     SetVerificateInputs(true);
+    setFormError(false);
     if(attributes.name==='Name'){
-      {Value.length>=3 ? (setName(Value), setNameError(false)):(setNameError(true))}
+      {(Value.length>=3 && Value.length<=25) ? (setName(Value), setNameError(false)):(setNameError(true))}
     }
     if(attributes.name==='Lastname'){
-      {Value.length>=3 ? (setLastName(Value), setLastnameError(false)):(setLastnameError(true))}
+      {(Value.length>=3 && Value.length<=25) ? (setLastName(Value), setLastnameError(false)):(setLastnameError(true))}
     }
     if(attributes.name==='password'){
-      {Value.length>=8 ? (setPassword(Value), setLastnameError(false)):(setLastnameError(true))}
+      {(Value.length>=8 && Value.length<=25) ? (setPassword(Value), setPasswordErrorr(false)):(setPasswordErrorr(true))}
     }
   }
   const handlesubmit= async()=>{
@@ -51,7 +53,7 @@ const Updateuserform = () => {
       }
       setFormUpdateUser(false);
     }else{
-      setFormUpdateUser(false);
+      setFormError(true);
     }
   }
 
@@ -65,6 +67,7 @@ const Updateuserform = () => {
             <form action="" id='FormUpdateuser' className={'Update_User_Form'+' Update_User_Form'+darkmode}>
                 <div className={'Subcontainer_Update_User_Form'+' Subcontainer_Update_User_Form'+darkmode}>
                   <p className={'Info_modal_update'+' Info_modal_update'+darkmode}>Cambie los datos que deseé cambiar:</p>
+                  {formerror && <p className='alert_formerror'>Porfavor, no deje ningun campo en rojo</p>}
                   <div className='label-inputs-updateuser'>
                     <ModalUpdateinput attributes={{
                         title:'Nombre:',
@@ -74,13 +77,13 @@ const Updateuserform = () => {
                       }} handlemodalupdateuser={handlemodalupdateuser}/>
                       <ModalUpdateinput attributes={{
                         title:'Apellido:',
-                        className:`modalupdateuserinput modalupdateuserinput${darkmode} lastname${nameerror}`,
+                        className:`modalupdateuserinput modalupdateuserinput${darkmode} lastname${lastnameerror}`,
                         defaultValue:currentUser.lastName,
                         name:'Lastname'
                       }} handlemodalupdateuser={handlemodalupdateuser}/>
                       <ModalUpdateinput attributes={{
                         title:'Contraseña:',
-                        className:`modalupdateuserinput modalupdateuserinput${darkmode} password${nameerror}`,
+                        className:`modalupdateuserinput modalupdateuserinput${darkmode} password${passworderror}`,
                         defaultValue:currentUser.password,
                         name:'password'
                       }} handlemodalupdateuser={handlemodalupdateuser}/>
