@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    min-height: 630px;
 }
 .edit-subcontainer{
     height: 50%;
@@ -100,9 +101,6 @@
 
 @media(max-width:600px){
     .edit-container-all{
-        height: 110vh;
-    }
-    .edit-container-all{
-        min-height: 700px;
+        min-height: 630px;
     }
 }

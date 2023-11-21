@@ -1,5 +1,6 @@
 .contenedortotal{
     background-color: rgb(84, 84, 145);
+    min-height: 600px;
 }
 .contenedortotaltrue{
     background-color: rgb(53, 52, 52);

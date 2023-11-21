@@ -16,11 +16,11 @@ function Homem() {
     },
     {
       description: "El proyecto de ToDo List es una aplicación que te permite crear, organizar y gestionar tus tareas diarias de manera eficiente. Puedes agregar, editar y eliminar tareas y marcarlas como completadas",
-      image: "./../img/Marcandocorrecto.jpg", // Ruta de tu imagen
+      image: "./../../public/img/Marcandocorrecto.jpg", // Ruta de tu imagen
     },
     {
       description: "¡Organiza, Haz, Realiza! Con Tu Lista Maestra, tu lista de tareas nunca ha sido tan fácil de manejar. ¡Únete hoy y pon fin a la procrastinación!",
-      image: "./../img/hacertodo.jpg", // Ruta de tu imagen
+      image: "./../../public/img/hacertodo.jpg", // Ruta de tu imagen
       link: "Registrate Aquí"
     },
   ];
@@ -75,7 +75,7 @@ function Homem() {
                   </div>
               <div className="ImgTodolist">
               <div
-                    src="./../img/hacertodo.jpg"
+                    src="./../../public/img/hacertodo.jpg"
                     alt={slides[currentIndex].title}
                     className={`carousel__image${currentIndex} ${btnlistener ? "active-BTN" : ""}`}
                   >
