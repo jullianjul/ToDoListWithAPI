@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "homepage": "https://jullianjul.github.io/ToDoList",
+  "homepage": "https://jullianjul.github.io/ToDoListWithAPI",
   "private": true,
   "version": "0.0.0",
   "type": "module",
