@@ -20,10 +20,14 @@ function App() {
 
   useEffect(() => {
     const cambiarnombre = () => {
-      if (currentUser && currentUser.firstName.length > 10) {
-        setNameUser(currentUser.firstName.substring(0, 10) + '...');
-      } else {
-        setNameUser(currentUser.firstName);
+      if(currentUser){
+        if (currentUser && currentUser.firstName.length > 10) {
+          setNameUser(currentUser.firstName.substring(0, 10) + '...');
+        } else {
+          setNameUser(currentUser.firstName);
+        }
+      }else{
+        setNameUser('')
       }
     };
   
