@@ -19,7 +19,7 @@ const Myprofilelogic = () => {
     localStorage.removeItem('user');
     localStorage.setItem('isLoggedIn', false)
     dispatch({type:'LOGOUT'})
-    navigate('/ToDoList/loginandregister')
+    navigate('/ToDoListWithAPI/loginandregister')
   }
   // Estados para almacenar la información ingresada por el usuario
 
