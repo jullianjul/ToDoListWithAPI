@@ -16,7 +16,7 @@ export const Todolist = () => {
         localStorage.removeItem('isLoggedIn');
         gettodos([])
         dispatch({ type: 'LOGOUT' });
-        navigate('/ToDoList/loginandregister');
+        navigate('/ToDoListWithAPI/loginandregister');
     };
   return (
     <>

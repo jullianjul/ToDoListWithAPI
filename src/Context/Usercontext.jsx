@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.user });
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('user', JSON.stringify(response.user));
-        navigate('/ToDoList/aplication');
+        navigate('/ToDoListWithAPI/aplication');
       }
     } catch (error) {
       console.error('Error en continueloguin:', error);

@@ -7,7 +7,7 @@ function Homem() {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate("/ToDoList/Loginandregister");
+    navigate("/ToDoListWithAPI/Loginandregister");
   }
   const slides = [
     {

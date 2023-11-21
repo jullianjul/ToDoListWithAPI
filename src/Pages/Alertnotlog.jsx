@@ -12,7 +12,7 @@ const Alertnotlog = () => {
   
     // Función que se ejecutará después de la cuenta regresiva
     const funcionDemorada = () => {
-      navigate("/ToDoList/Loginandregister");
+      navigate("/ToDoListWithAPI/Loginandregister");
     };
   
     useEffect(() => {

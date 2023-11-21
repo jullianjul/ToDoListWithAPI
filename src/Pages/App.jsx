@@ -45,7 +45,7 @@ function App() {
       {isLoggedIn ? (
         <>
         <h1 className='titulos'>Lista Maestra de {nameuser}</h1>
-        <button className='btn-miperfil' onClick={()=> navigate('/ToDoList/myprofile')}>Mi perfil</button>
+        <button className='btn-miperfil' onClick={()=> navigate('/ToDoListWithAPI/myprofile')}>Mi perfil</button>
         </>
       ):
       (<h1 className='titulos'>Tu lista Maestra</h1>)
@@ -53,18 +53,18 @@ function App() {
       </div>
         <nav className='Cajanav'>
           <ul className='Navs'>
-            <Li className={darkmode?'Navs_lidark':'Navs_li'} link='/ToDoList' content='Home'/>
-            <Li className={isLoggedIn ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isLoggedIn ? '/ToDoList/aplication' : '/ToDoList/loginandregister'} content={isLoggedIn ? 'Ingresar' : 'Registrarse/iniciar'}/>
+            <Li className={darkmode?'Navs_lidark':'Navs_li'} link='/ToDoListWithAPI' content='Home'/>
+            <Li className={isLoggedIn ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isLoggedIn ? '/ToDoListWithAPI/aplication' : '/ToDoListWithAPI/loginandregister'} content={isLoggedIn ? 'Ingresar' : 'Registrarse/iniciar'}/>
             <DarkModeButton/>
           </ul>
         </nav> 
       </div>
     </div>
     <Routes>
-        <Route path='/ToDoList' element={<Homem />}/>
-        <Route path='/ToDoList/loginandregister' element={<Loginandregister/>} />
-        <Route path='/ToDoList/aplication' element={<Aplication/>} />
-        <Route path='/ToDoList/myprofile' element={<Myprofile/>} />
+        <Route path='/ToDoListWithAPI' element={<Homem />}/>
+        <Route path='/ToDoListWithAPI/loginandregister' element={<Loginandregister/>} />
+        <Route path='/ToDoListWithAPI/aplication' element={<Aplication/>} />
+        <Route path='/ToDoListWithAPI/myprofile' element={<Myprofile/>} />
       </Routes>
     </>
   );

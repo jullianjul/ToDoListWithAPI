@@ -14,7 +14,7 @@ const LoginAndRegister= () => {
   useEffect(() => {
     const redirect=()=>{
       if(isLoggedIn){
-        navigate('/ToDoList/aplication')
+        navigate('/ToDoListWithAPI/aplication')
       }
     }
     redirect();
