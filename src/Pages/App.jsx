@@ -61,6 +61,7 @@ function App() {
       </div>
     </div>
     <Routes>
+        <Route path='/' element={<Homem />}/>
         <Route path='/ToDoListWithAPI' element={<Homem />}/>
         <Route path='/ToDoListWithAPI/loginandregister' element={<Loginandregister/>} />
         <Route path='/ToDoListWithAPI/aplication' element={<Aplication/>} />
