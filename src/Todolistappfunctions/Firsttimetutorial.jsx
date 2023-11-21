@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './Firsttimetutorial.css';
-import Carousel1stimg from '../../public/img/Carousel1stimg.jpg'
-import Carousel2ndimg from '../../public/img/Carousel2ndimg.jpg'
-import Carousel3rdimg from '../../public/img/Carousel3rdimg.jpg'
-import Carousel4thimg from '../../public/img/Carousel4thimg.jpg'
-import Carousel5thimg from '../../public/img/Carousel5thimg.jpg'
-import Carousel6thimg from '../../public/img/Carousel6thimg.jpg'
+import Carousel1stimg from '/img/Carousel1stimg.jpg'
+import Carousel2ndimg from '/img/Carousel2ndimg.jpg'
+import Carousel3rdimg from '/img/Carousel3rdimg.jpg'
+import Carousel4thimg from '/img/Carousel4thimg.jpg'
+import Carousel5thimg from '/img/Carousel5thimg.jpg'
+import Carousel6thimg from '/img/Carousel6thimg.jpg'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useTodoContext } from '../Context/Todolistcontext';

@@ -23,6 +23,7 @@ export const UserProvider = ({ children }) => {
 
   const continueloguin = async (user) => {
     try {
+      setLoading(true);
       const response = await User_Auth(user);
       if ('error' in response) {
         console.error('Error en la solicitud:', response.error);
@@ -30,7 +31,6 @@ export const UserProvider = ({ children }) => {
           dispatch({ type: 'LOGIN_FAILURE', payload: response });
         } else {
           dispatch({ type: 'LOGIN_FAILURE' });
-          window.alert('algo salio mal');
         }
       } else {
         dispatch({ type: 'LOGIN_SUCCESS', payload: response.user });
@@ -40,13 +40,16 @@ export const UserProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Error en continueloguin:', error);
+    }finally{
+      setLoading(false);
     }
   };
 
   const [formupdateuser,setFormUpdateUser]=useState(false);
+  const [loading, setLoading]=useState(false);
 
   return (
-    <UserContext.Provider value={{ state, dispatch, continueloguin, isLoggedIn: state.isLoggedIn,formupdateuser,setFormUpdateUser }}>
+    <UserContext.Provider value={{ state, dispatch, continueloguin, isLoggedIn: state.isLoggedIn,formupdateuser,setFormUpdateUser,loading, setLoading }}>
       {children}
     </UserContext.Provider>
   );

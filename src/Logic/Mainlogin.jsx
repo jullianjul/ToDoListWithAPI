@@ -11,7 +11,7 @@ const Mainlogin= () => {
   const { darkmode, toggleDarkMode, toggleFormulario } = useDarkMode();
 
   const navigate = useNavigate();
-  const { state, continueloguin } = useUser(); // Aquí obtendrás el estado y las funciones del reducer
+  const { state, continueloguin, loading, setLoading} = useUser(); // Aquí obtendrás el estado y las funciones del reducer
   const { credentialsError } = state; // Accedes a las propiedades desde el estado del reducer
   
   {/*Fin animación*/}
@@ -79,7 +79,7 @@ const Mainlogin= () => {
                 {passwordError && 
                 <label htmlFor="" className='label-error'>contraseña invalida o incompleta</label>
                 }
-                <input onClick={handleSubmit} type='button' value={'Entrar'}  className={darkmode?'botonentrardark':'botonentrar'}/>
+                <input onClick={handleSubmit} type='button' value={loading ?'Cargando...' :'Entrar'}  className={darkmode?'botonentrardark':'botonentrar'}/>
                 <div className='Linkstoforms'>
                 <a onClick={toggleFormulario} className={darkmode?'linktoformdark':'linktoform'}>¿Aun no estas registrado?</a>
                 </div>
