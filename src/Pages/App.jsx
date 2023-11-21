@@ -54,7 +54,7 @@ function App() {
         <nav className='Cajanav'>
           <ul className='Navs'>
             <Li className={darkmode?'Navs_lidark':'Navs_li'} link='/ToDoListWithAPI' content='Inicio'/>
-            <Li className={isLoggedIn ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isLoggedIn ? '/ToDoListWithAPI/aplication' : '/ToDoListWithAPI/loginandregister'} content={isLoggedIn ? 'Ingresar' : 'Registrarse/iniciar'}/>
+            <Li className={isLoggedIn ? (darkmode?'Navs_log_userdark':'Navs_log_user') : (darkmode?'Navs_lidark':'Navs_li')} link={isLoggedIn ? '/ToDoListWithAPI/aplication' : '/ToDoListWithAPI/loginandregister'} content={isLoggedIn ? 'Ingresar' : 'Iniciar sesión'}/>
             <DarkModeButton/>
           </ul>
         </nav> 
