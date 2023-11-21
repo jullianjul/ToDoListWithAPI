@@ -116,4 +116,10 @@
     .form_create_todos{
         height: 110vh;
     }
+    .form_container{
+        width: 100%;
+    }
+    .form_container_labelinputs{
+        width: 80%;
+    }
 }

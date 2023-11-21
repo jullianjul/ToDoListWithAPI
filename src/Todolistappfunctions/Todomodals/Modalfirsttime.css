@@ -70,3 +70,8 @@
 .Modalfirsttime_continue:hover{
     background-color: rgb(157, 228, 157);
 }
+@media(max-width:600px){
+    .Modalfirsttime_subcontainer{
+        width: 90%;
+    }
+}
