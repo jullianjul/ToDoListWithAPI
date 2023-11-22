@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Mainregister.css';
-import Input from './../Pages/input';
+import Input from '../Inputs/input';
 import { useDarkMode } from './../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";
 import { useUser } from './../Context/Usercontext';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Register } from '../licomponents/Register';
+import { Register } from '../Inputs/Register';
 import Modal from '../Modals/Modal';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { useNavigate } from "react-router-dom";

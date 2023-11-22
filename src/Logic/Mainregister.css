@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     z-index: 0;
-    background-image: url(../../public/img/Fondologinregister.jpg);
+    background-image: url(/img/Fondologinregister.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   z-index: 0;
-  background-image: url(../../public/img/Fondologinregisterdarkmode.jpg);
+  background-image: url(/img/Fondologinregisterdarkmode.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
