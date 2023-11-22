@@ -6,6 +6,7 @@ import Carousel3rdimg from '/img/Carousel3rdimg.jpg'
 import Carousel4thimg from '/img/Carousel4thimg.jpg'
 import Carousel5thimg from '/img/Carousel5thimg.jpg'
 import Carousel6thimg from '/img/Carousel6thimg.jpg'
+import Carousel7thimg from '/img/Carousel7thimg.jpg'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useTodoContext } from '../Context/Todolistcontext';
@@ -47,6 +48,10 @@ export const Firsttimetutorial = () => {
     },
     {
       imageUrl: Carousel6thimg,
+      description: 'Estos colores representan la urgencia de tus tareas: rojo (1 día o menos), amarillo (3 días o menos), y verde (más de 3 días). Tus tareas se ordenan según la fecha, destacando las más urgentes al principio.',
+    },
+    {
+      imageUrl: Carousel7thimg,
       description: 'En la sección de tareas completadas, se encuentran disponibles dos opciones: "Desmarcar tarea" y "Eliminar tarea". El botón de "Desmarcar tarea" tiene la función de actualizar el estado de la tarea, trasladándola a la sección de pendientes.',
       btn:'Finalizar tutorial'
     },
@@ -86,7 +91,7 @@ export const Firsttimetutorial = () => {
                       </div>
                       <div className='description-container'>
                         <p>{slides[currentSlide].description}</p>
-                        {currentSlide==5 &&
+                        {currentSlide==6 &&
                           <div className={'carousel-slide-btn'}>
                                 <button className={'carousel-slide-btn-btn'} onClick={handlecancel}>{slides[currentSlide].btn}</button>
                             </div>
@@ -95,7 +100,7 @@ export const Firsttimetutorial = () => {
                       
                   </div>
               <div className={'Arrow forward_container'+' dissapearf'+currentSlide}>
-                    <p onClick={currentSlide==5?null:handleNextSlide}><IoIosArrowForward/></p>
+                    <p onClick={currentSlide==6?null:handleNextSlide}><IoIosArrowForward/></p>
               </div>
           </div>
       </div>

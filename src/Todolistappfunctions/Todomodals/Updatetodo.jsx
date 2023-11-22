@@ -8,16 +8,13 @@ const EditForm = ({ todo, onUpdate, onCancel }) => {
   const { darkmode, toggleDarkMode } = useDarkMode();
   const [title, setTitle] = useState(todo.name);
   const [description, setDescription] = useState(todo.description);
+  const [finishDate, setFinishDate] = useState(todo.finishDate.substring(0, 10));
   const [editerror, setEditError]= useState(false);
 
-  const handleUpdate = () => {
-    const date = new Date();
-    var dd = date.getDate();
-    var mm = date.getMonth() + 1;
-    var yyyy = date.getFullYear();
-    var finalDate = yyyy + '-' + mm + '-' + dd;
-    if(title.length>3 && description.length>3){
-      const updatedTodo = { ...todo, name: title, description, finishDate:finalDate,};
+  const handleUpdate = (event) => {
+    event.preventDefault(); // Evitar que se recargue la página al enviar el formulario
+    if(title.length>3 && description.length>3 && !finishDate==''){
+      const updatedTodo = { ...todo, name: title, description, finishDate,};
       onUpdate(updatedTodo);
     }else{
       setEditError(true);
@@ -28,7 +25,7 @@ const EditForm = ({ todo, onUpdate, onCancel }) => {
   }
 
   return (
-    <div className={'edit-container-all'+' edit-container-all'+darkmode}>
+    <form onSubmit={handleUpdate} className={'edit-container-all'+' edit-container-all'+darkmode}>
       <div className={'edit-subcontainer'+' edit-subcontainer'+darkmode}>
           <div className={'edit-exitbutton-container'+' edit-exitbutton-container'+darkmode}>
             {editerror &&   
@@ -49,14 +46,18 @@ const EditForm = ({ todo, onUpdate, onCancel }) => {
               <p className={'todotitles'+' todotitles'+darkmode}>Nueva descripción:</p>
               <textarea type="text" className='edit-input edit-textarea' value={description} onChange={(e) => setDescription(e.target.value)} />
             </label>
+            <label className='edit-label'>
+              <p className={'todotitles' + ' todotitles' + darkmode}>Nueva fecha de finalización:</p>
+              <input type="date" value={finishDate} className='edit-input' onChange={(e) => setFinishDate(e.target.value)} />
+            </label>
           </div>
         </div>
       </div>
       <div className='edit-buttons'>
-            <button onClick={handleUpdate} className={'edit-btn editactu'+' editactu'+darkmode}>Actualizar Tarea</button>
+            <button type='submit' className={'edit-btn editactu'+' editactu'+darkmode}>Actualizar Tarea</button>
             <button onClick={onCancel} className={'edit-btn editcancel'+' editcancel'+darkmode}>Cancelar</button>
           </div>
-    </div>
+    </form>
   );
 };
 

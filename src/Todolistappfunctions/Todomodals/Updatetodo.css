@@ -103,4 +103,7 @@
     .edit-container-all{
         min-height: 630px;
     }
+    .edit-subcontainer{
+        width: 80%;
+    }
 }

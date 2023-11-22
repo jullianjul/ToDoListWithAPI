@@ -18,10 +18,15 @@ export const Maininputs = () => {
   const [loading, setLoading] = useState(false); // Nuevo estado para indicar carga
   const [inputerror, setInputError]= useState(false);
   const [inputerrorlength, setInputErrorLength]= useState(false);
+  const [finishDate, setFinishDate] = useState('');
   // Función para manejar el cambio en el input del título
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
     setInputError(false)
+  };
+  const handleFinishDateChange = (event) => {
+    setFinishDate(event.target.value);
+    setInputError(false);
   };
 
   // Función para manejar el cambio en el input de la descripción
@@ -38,18 +43,13 @@ export const Maininputs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Evitar que se recargue la página al enviar el formulario
 
-    if (title === '' || description === '') {
+    if (title === '' || description === '' || finishDate=='') {
       console.log('papi como me vas a dejar eso en blanco???');
       setInputError(true);
     }else if(title.length<4 || description.length<4){
       setInputErrorLength(true)
     } else {
-      const date = new Date();
-      var dd = date.getDate();
-      var mm = date.getMonth() + 1;
-      var yyyy = date.getFullYear();
-      var finalDate = yyyy + '-' + mm + '-' + dd;
-      //2023-11-11
+      const finalDate=finishDate;
       console.log(finalDate);
 
       const todoData = {
@@ -120,6 +120,15 @@ export const Maininputs = () => {
             <h6 className='todotitles'>Descripcion:</h6>
             <textarea className='formtodo_inputs textareainput' value={description} onChange={handleDescriptionChange} />
           </label>
+          <label className='form_label'>
+          <h6 className='todotitles'>Fecha de finalización:</h6>
+          <input
+            type="date"
+            className='formtodo_inputs'
+            value={finishDate}
+            onChange={handleFinishDateChange}
+          />
+          </label>            
           </div>
         </div>
         <button type="submit" disabled={loading} className='form_create_todos_button'>
@@ -129,3 +138,4 @@ export const Maininputs = () => {
     </>
   );
 };
+

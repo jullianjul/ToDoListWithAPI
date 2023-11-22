@@ -113,6 +113,21 @@ export const Todofunctions = () => {
     return titleMatch && filterCondition;
   });
 
+  const sortedTodos = filteredTodos.sort((a, b) => {
+    const dateA = new Date(a.finishDate);
+    const dateB = new Date(b.finishDate);
+    return dateA - dateB; // Orden ascendente, cambia a dateB - dateA para orden descendente
+  });
+
+  const getDaysRemaining = (finishDate) => {
+    const currentDate = new Date();
+    const finishDateTime = new Date(finishDate);
+    const timeDifference = finishDateTime.getTime() - currentDate.getTime();
+    const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    return daysDifference;
+  };
+
+  //{getDaysRemaining(todo.finishDate.substring(0, 10))}
   return (
     <>
     {itsfirsttime.tutorial && <Firsttimetutorial/>}
@@ -146,18 +161,20 @@ export const Todofunctions = () => {
                 <p>Cargando...</p>
               </div>
             ) : (
-              filteredTodos.length === 0 ? (
+              sortedTodos.length === 0 ? (
 
                 <div className={'no-todos-message'+' no-todos-message'+darkmode}>
                   {itsfirsttime.firstimemessage ? <p>Bienvenido a Tu lista maestra {currentUser.firstName} <br /> crea tu primera tarea para comenzar tu aventura</p> : <p>No hay tareas que coincidan con la búsqueda o filtro seleccionado.</p>}
                 </div>
               ) :
-              (filteredTodos.map((todo) => (
+              (sortedTodos.map((todo) => (
                 <div key={todo._id} className={'todo_container'+' todo_container'+darkmode}>
+                  <div className='Todo_informationandfinalization'>
                   <div className={'Todo_information'+' Todo_information'+darkmode}>
                     <h1 className={'Todo-title t title'+currentFilter+' titletodo'+darkmode}>{todo.name.charAt(0).toUpperCase() + todo.name.slice(1)}</h1>
                     <p className={'todo-description t description'+currentFilter}>{todo.description}</p>
-                    {currentFilter==='pendientes' ? <p>creada el: {todo.finishDate.substring(0, 10)}</p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
+                  </div>
+                  {currentFilter==='pendientes' ? <p className={(getDaysRemaining(todo.finishDate.substring(0, 10)))>=4?(`todo safetodotime todo${darkmode}`):((getDaysRemaining(todo.finishDate.substring(0, 10)))<=1?(`todo outoftime todo${darkmode}`):(`todo warningtodotime todo${darkmode}`))}>finalizar antes del {todo.finishDate.substring(0, 10)}</p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
                   </div>
                   <div className='Todo_buttons'>
                   {currentFilter=='completadas' &&
