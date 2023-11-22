@@ -231,6 +231,9 @@
 .outoftime{
     color: rgb(179, 21, 21);
 }
+.todotext-ttrue{
+    color: white;
+}
 @media(max-width:650px){
     .no-todos-message{
         font-size: 20px;
