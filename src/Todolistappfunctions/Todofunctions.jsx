@@ -9,6 +9,7 @@ import { IoSearchSharp,IoArrowUndoCircleSharp } from "react-icons/io5";
 import { FaEdit,FaCheckCircle,FaTrashAlt } from "react-icons/fa";
 import { useDarkMode } from '../Context/DarkModeContext';
 import { Firsttimetutorial } from './firsttimetutorial';
+import { IoCalendarSharp } from "react-icons/io5";
 
 export const Todofunctions = () => {
   const { darkmode, toggleDarkMode } = useDarkMode();
@@ -174,7 +175,7 @@ export const Todofunctions = () => {
                     <h1 className={'Todo-title t title'+currentFilter+' titletodo'+darkmode}>{todo.name.charAt(0).toUpperCase() + todo.name.slice(1)}</h1>
                     <p className={'todo-description t description'+currentFilter}>{todo.description}</p>
                   </div>
-                  {currentFilter==='pendientes' ? <p className={(getDaysRemaining(todo.finishDate.substring(0, 10)))>=4?(`todo safetodotime todo${darkmode}`):((getDaysRemaining(todo.finishDate.substring(0, 10)))<=1?(`todo outoftime todo${darkmode}`):(`todo warningtodotime todo${darkmode}`))}>finalizar antes del {todo.finishDate.substring(0, 10)}</p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
+                  {currentFilter==='pendientes' ? <p className={(getDaysRemaining(todo.finishDate.substring(0, 10)))>=4?(`todo safetodotime todo${darkmode}`):((getDaysRemaining(todo.finishDate.substring(0, 10)))<=1?(`todo outoftime todo${darkmode}`):(`todo warningtodotime todo${darkmode}`))}>finalizar antes del {todo.finishDate.substring(0, 10)} <IoCalendarSharp/></p>:<p>finalizada el: {todo.finishDate.substring(0, 10)}</p>}
                   </div>
                   <div className='Todo_buttons'>
                   {currentFilter=='completadas' &&
