@@ -10,6 +10,7 @@
     align-items: center;
     flex-direction: column;
     min-height: 630px;
+
 }
 .buttondiv{
     width: 100%;
@@ -112,12 +113,10 @@
 .disableinputerror:hover{
     color: rgb(248, 126, 126);
 }
-@media(max-width:600px){
-    .form_create_todos{
-        height: 110vh;
-    }
+@media(max-width:500px){
     .form_container{
-        width: 100%;
+        width: 90%;
+        height: 320px;
     }
     .form_container_labelinputs{
         width: 80%;

@@ -28,7 +28,7 @@ const Alertnotlog = () => {
           funcionDemorada();
         }
       }
-    }, [segundosRestantes, isLoggedIn]);
+    }, [segundosRestantes]);
   
   
   

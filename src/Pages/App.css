@@ -196,10 +196,10 @@
 
 @media(max-width:530px){
     .header{
-        height: 12vh;
+        height: auto;
     }
     .headerdark{
-        height: 12vh;
+        height: auto;
     }
     .titulos{
         font-size: 20px;

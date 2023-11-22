@@ -69,7 +69,7 @@ function Homem() {
         </div>
         <div className={darkmode?'descripcion2dark':'descripcion2'}>
               <div className={`descripcion ${btnlistener ? "active-BTN" : ""}`}>
-                  <div className="cajadescripcion">
+                  <div className={"cajadescripcion"+" cajadescripcion"+darkmode}>
                     <p className="descripcionP">{slides[currentIndex].description}</p>
                     <a onClick={handleClick} className="link">{slides[currentIndex].link}</a>
                   </div>

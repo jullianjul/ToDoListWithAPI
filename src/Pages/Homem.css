@@ -5,7 +5,7 @@
     padding: none;
 }
 .main{
-    background-image: url(../../public/img/fondo.jpg);
+    background-image: url(/img/fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -13,9 +13,12 @@
     margin-top: 0px;
     width: 100%;
     height: 92vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .maindark{
-    background-image: url(../../public/img/Fondodarkmode.jpg);
+    background-image: url(/img/Fondodarkmode.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -23,6 +26,9 @@
     margin-top: 0px;
     width: 100%;
     height: 92vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .espacio{
     height: 20px;
@@ -47,6 +53,8 @@
     border-radius: 20px;
     border: solid 1px;
     border-color:hsl(0, 0%, 0%);
+    width: 90%;
+    margin-bottom: 20px;
 }
 .titlebrand{
     font-size: 29px;
@@ -59,7 +67,9 @@
     justify-content: center;
     align-items: center;
     height: 70vh;
+    padding: 20px;
     backdrop-filter: blur(2px);
+    width: 90%;
 }
 .descripcion2dark{
     background-color: hsla(180, 22%, 73%, 0.5);
@@ -69,7 +79,9 @@
     justify-content: center;
     align-items: center;
     height: 70vh;
+    padding: 20px;
     backdrop-filter: blur(2px);
+    width: 90%;
 }
 .descripcion{
     width: 100%;
@@ -84,18 +96,22 @@
 }
 .cajadescripcion{
     width: 60%;
-    border: solid 4px;
-    background-color: hsl(64, 100%, 70%);
-    border-color: hsl(67, 100%, 98%);
+    background-color: #5ac2cf;
     border-radius: 20px;
+    border: 2px solid #7de1ee;
     height: 300px;
     display: flex;
     margin-left: 30px;
+    margin-top: 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.7);
+}
+.cajadescripciontrue{
+    background-color: #bec3c4;
+    border-color: rgb(212, 222, 224);
 }
 .descripcionP{
     font-size: 20px;
@@ -109,7 +125,7 @@
     align-items: center;
 }
 .carousel__image0{
-    background-image: url(./../img/muchachosconarchivos.jpg);
+    background-image: url(/img/muchachosconarchivos.jpg);
     background-position: center;
     height: 100%;
     background-size: contain;
@@ -122,7 +138,7 @@
     box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.7);
 }
 .carousel__image1{
-    background-image: url(./../img/hacertodo.jpg);
+    background-image: url(/img/hacertodo.jpg);
     height: 100%;
     background-size: contain;
     background-position: center;
@@ -135,7 +151,7 @@
     box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.7);
 }
 .carousel__image2{
-    background-image: url(./../img/Marcandocorrecto.jpg);
+    background-image: url(/img/Marcandocorrecto.jpg);
     height: 100%;
     background-size: contain;
     background-position: center;
@@ -187,14 +203,20 @@
     cursor: pointer;
 }
 @media(max-width:1000px){
+    .main{
+        height: auto;
+    }
+    .maindark{
+        height: auto;
+    }
     .descripcion2{
         flex-direction: column;
-        height: 800px;
+        min-height: 800px;
         justify-content: start;
     }
     .descripcion2dark{
         flex-direction: column;
-        height: 800px;
+        min-height: 800px;
         justify-content: start;
     }
     .descripcion{
@@ -202,7 +224,7 @@
         justify-content: start;
     }
     .cajadescripcion{
-        width: 98%;
+        width: 100%;
         margin-left: 0;
     }
     .carousel__image0{
@@ -223,14 +245,15 @@
         margin-left: 0;
         width: 300px;
     }
-    .main{
-        height: 150vh;
-    }
-    .maindark{
-        height: 150vh;
-    }
     .ImgTodolist{
         height: 50%;
         width: 100%;
     }
+}
+
+@media(max-width:500px){
+    .descripcionP{
+        font-size: 15px;
+    }
+
 }
