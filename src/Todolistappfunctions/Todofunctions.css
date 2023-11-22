@@ -212,9 +212,13 @@
         font-size: 20px;
     }
     .Mainbuttons_todolist{
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: 100px;
-        margin-bottom: 20px;
+        align-self: start;
+        margin-top: 30px;
+    }
+    .searcher{
+        margin-bottom: 10px;
     }
     .ALLTODOS{
         border-radius: 20px;
@@ -222,8 +226,10 @@
     .pendingandcompleted-btn{
         display: flex;
         height: auto;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
+        margin-left: 10px;
+        margin-top: 10px;
     }
     .searcher{
         height: auto;
@@ -240,8 +246,6 @@
         margin-top: 3px;
     }
     .mainbuttons-btn{
-        border-radius: 15px;
-        margin-bottom: 10px;
         margin-right: 5px;
         margin-left: 5px;
     }
